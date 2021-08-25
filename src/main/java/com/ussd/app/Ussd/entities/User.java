@@ -10,7 +10,7 @@ import java.util.Set;
 @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match")
 @Entity
 
-@Table(name="user", uniqueConstraints = @UniqueConstraint(columnNames ="email" ))
+@Table(name="ussd_user", uniqueConstraints = @UniqueConstraint(columnNames ="email" ))
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
