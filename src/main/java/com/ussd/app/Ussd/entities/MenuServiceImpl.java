@@ -84,9 +84,9 @@ public class MenuServiceImpl implements MenuService {
         String id = "0";
         int l = input.split("\\*").length;
 
-        if(input.split("\\*").length == 3) {
+        if(input.split("\\*").length == 2) {
             id = input.split("\\*")[1];
-        }else if(input.split("\\*").length == 4) {
+        }else if(input.split("\\*").length == 3) {
             id = input.split("\\*")[2];
         }
         long count = Integer.parseInt(id);
