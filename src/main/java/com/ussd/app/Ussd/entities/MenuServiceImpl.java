@@ -89,9 +89,7 @@ public class MenuServiceImpl implements MenuService {
         }else if(input.split("\\*").length == 3) {
             id = input.split("\\*")[2];
         }
-        else if(input.split("\\*").length == 2) {
-            id = input.split("\\*")[3];
-        }
+
         long count = Integer.parseInt(id);
 
         try {
@@ -136,13 +134,16 @@ public class MenuServiceImpl implements MenuService {
             hopital = Long.parseLong(input.split("\\*")[2]);
         }
 
-        Hopital hop = hopitalRepository.findByNumero(hopital);
+        if(input.split("\\*").length != 2){
+            Hopital hop = hopitalRepository.findByNumero(hopital);
 
-        int size = hop.getDepartements().size();
+            int size = hop.getDepartements().size();
 
-        if (ordre > size || ordre == 0){
-            return "END Erreur de saisie";
+            if (ordre > size || ordre == 0){
+                return "END Erreur de saisie";
+            }
         }
+
 
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
