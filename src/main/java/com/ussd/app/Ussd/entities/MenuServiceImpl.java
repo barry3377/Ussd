@@ -145,8 +145,7 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getHeure(String input) {
 
-        Integer jour = Integer.parseInt(input.split("\\*")[3]);
-        System.out.println(jour);
+        Long jour = Long.parseLong(input.split("\\*")[3]);
         if(jour < 1 || jour > 7) {
             return "END Erreur de saisie";
         }
