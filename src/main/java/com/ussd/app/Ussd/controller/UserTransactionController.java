@@ -61,6 +61,11 @@ public class UserTransactionController {
             return getMenu("confirmation", input);
 
         }
+        else if((  (input.matches("^3\\*1\\*[1-7]"))
+             )) {
+            return getMenu("JourSecond", input);
+
+        }
 
 
     	return ResponseEntity.ok()
