@@ -124,8 +124,14 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getJours(String input) {
 
-       Long hopital = Long.parseLong(input.split("\\*")[1]);
+        Long hopital = null;
         int ordre = Integer.parseInt(input.split("\\*")[2]);
+
+        if(input.split("\\*").length == 3){
+            hopital = Long.parseLong(input.split("\\*")[1]);
+        }else if(input.split("\\*").length == 4){
+            hopital = Long.parseLong(input.split("\\*")[2]);
+        }
 
         Hopital hop = hopitalRepository.findByNumero(hopital);
 
