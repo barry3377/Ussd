@@ -125,21 +125,6 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getJours(String input) {
 
-
-        String regex = "^3\\*1";
-        String menu = "CON choisisez  le jour dont vous etes  dispo\n";
-
-        if(input.matches(regex))
-        {
-
-            menu += "1.Lundi \n";
-            menu += "2.Mardi\n";
-            menu += "3.Mercredi\n";
-            menu += "4.Jeudi \n";
-            menu += "5.Vendredi\n";
-            menu += "6.Samedi\n";
-            menu += "7.Dimanche\n";
-        }
         Long hopital = null;
         int ordre = Integer.parseInt(input.split("\\*")[2]);
 
@@ -158,6 +143,19 @@ public class MenuServiceImpl implements MenuService {
             return "END Erreur de saisie";
         }
 
+
+        String menu = "CON choisisez  le jour dont vous etes  dispo\n";
+
+        menu += "1.Lundi \n";
+        menu += "2.Mardi\n";
+        menu += "3.Mercredi\n";
+        menu += "4.Jeudi \n";
+        menu += "5.Vendredi\n";
+        menu += "6.Samedi\n";
+        menu += "7.Dimanche\n";
+        if(   input.matches("^3\\*1\\*[1-7]")){
+            return menu;
+        }
         return menu;
 
 
