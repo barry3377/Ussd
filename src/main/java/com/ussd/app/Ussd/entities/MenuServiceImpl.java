@@ -82,6 +82,8 @@ public class MenuServiceImpl implements MenuService {
     public String getService(String  input) {
         String menu = "CON choisisez un service\n";
         String id = "0";
+        int l = input.split("\\*").length;
+
         if(input.split("\\*").length == 3) {
             id = input.split("\\*")[1];
         }else if(input.split("\\*").length == 4) {
@@ -113,7 +115,7 @@ public class MenuServiceImpl implements MenuService {
 //            }
 //            return menu;
 
-            return "END Eureur de saisie";
+            return "END Eureur de saisie "+count+" "+l;
         }
 
 
