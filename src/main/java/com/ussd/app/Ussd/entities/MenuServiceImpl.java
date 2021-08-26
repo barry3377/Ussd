@@ -38,7 +38,7 @@ public class MenuServiceImpl implements MenuService {
             case "telephoneProche":
                 return  this.getTelephone();
             case "prolongerRDV":
-                return  this.getSecondMenu();
+                return  this.getSecondMenu(input);
             case "confirmation":
                 return  this.getConfirmation();
 
@@ -134,16 +134,14 @@ public class MenuServiceImpl implements MenuService {
             hopital = Long.parseLong(input.split("\\*")[2]);
         }
 
-        if(input.split("\\*").length == 3 || input.split("\\*").length == 4){
-            Hopital hop = hopitalRepository.findByNumero(hopital);
 
-            int size = hop.getDepartements().size();
+        Hopital hop = hopitalRepository.findByNumero(hopital);
 
-            if (ordre > size || ordre == 0){
-                return "END Erreur de saisie";
-            }
+        int size = hop.getDepartements().size();
+
+        if (ordre > size || ordre == 0){
+            return "END Erreur de saisie";
         }
-
 
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
@@ -179,8 +177,10 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public String getSecondMenu(){
-        String menu = "CON Prolonger vos Rendez vous\n";
+    public String getSecondMenu(String input){
+        Integer userInput = Integer.parseInt(input);
+
+        String menu = "CON Prolonger vos Rendez vous " + userInput +"\n";
         menu += "1.pour vous \n";
         menu += "2.pour une autre personne \n";
 

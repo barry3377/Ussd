@@ -9,6 +9,6 @@ public interface MenuService {
     String getMenu(String level, String input);
     String getCodeSecret(String input);
     String getTelephone();
-    String getSecondMenu();
+    String getSecondMenu(String input);
     String getConfirmation();
 }
