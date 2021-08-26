@@ -5,7 +5,7 @@ public interface MenuService {
     String getHopital();
     String getService(String input);
     String getJours(String input);
-    String getHeure();
+    String getHeure(String input);
     String getMenu(String level, String input);
     String getCodeSecret(String input);
     String getTelephone();

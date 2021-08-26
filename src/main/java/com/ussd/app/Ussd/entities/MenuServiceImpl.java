@@ -32,7 +32,7 @@ public class MenuServiceImpl implements MenuService {
             case "jours":
                 return this.getJours(input);
             case "heures":
-                return this.getHeure();
+                return this.getHeure(input);
             case "codeSecret":
                 return this.getCodeSecret(input);
             case "telephoneProche":
@@ -143,12 +143,17 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public String getHeure() {
+    public String getHeure(String input) {
         String menu = "CON Les heures disponibles\n";
         List<Heure> heures = heureRepository.findAll(Sort.by(Sort.Order.asc("numero")));
 
         for( Heure value : heures) {
             menu +=value.getNumero()+". "+ value.getInterval_heur()+"\n";
+        }
+
+        Integer jour = Integer.parseInt(input.split("\\*")[3]);
+        if(jour < 1 || jour > 7) {
+            return "END Erreur de saisie";
         }
         return menu;
 
@@ -159,6 +164,7 @@ public class MenuServiceImpl implements MenuService {
         String menu = "CON Prolonger vos Rendez vous\n";
         menu += "1.pour vous \n";
         menu += "2.pour une autre personne \n";
+
         return menu;
     }
 
@@ -168,8 +174,9 @@ public class MenuServiceImpl implements MenuService {
     //    Heure heures = heureRepository.findByNumero(ordre);
         List<Heure> heure = heureRepository.findAll();
         int size = heure.size();
-        if (ordre > size || ordre == 0){ return "Erreur de saisie";
-       }
+        if (ordre > size || ordre == 0){
+            return "Erreur de saisie";
+        }
         return "CON Entrer votre code secret";
     }
     @Override
