@@ -4,10 +4,7 @@ import com.ussd.app.Ussd.repository.*;
 import com.ussd.app.Ussd.utils.Jours;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/sante/ussd")
@@ -27,7 +24,7 @@ public class UserTransactionController {
 
 
 
-    @GetMapping
+    @PostMapping
 
     public ResponseEntity<String> processUssd(@RequestParam(name = "sessionId") String sessionId,
                                               @RequestParam(name = "phoneNumber") String msisdn,
