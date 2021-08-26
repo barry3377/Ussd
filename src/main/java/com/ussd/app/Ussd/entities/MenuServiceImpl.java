@@ -38,9 +38,11 @@ public class MenuServiceImpl implements MenuService {
             case "telephoneProche":
                 return  this.getTelephone();
             case "prolongerRDV":
-                return  this.getSecondMenu();
+                return  this.getSecondMenu(input);
             case "confirmation":
                 return  this.getConfirmation();
+            case "JourSecond":
+                return  this.getJourSecond();
 
         }
 
@@ -142,7 +144,9 @@ public class MenuServiceImpl implements MenuService {
         if (ordre > size || ordre == 0){
             return "END Erreur de saisie";
         }
-
+        if( input.matches("^3\\*1\\*[1-7]")){
+            return  this.getJourSecond()    ;
+        }
 
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
@@ -168,20 +172,20 @@ public class MenuServiceImpl implements MenuService {
             //return "END Erreur de saisie";
             menu += "Jour: "+jour+"\n";
         }
-        if(   input.matches("^3\\*1\\*[1-7]")) {
+
             List<Heure> heures = heureRepository.findAll(Sort.by(Sort.Order.asc("numero")));
 
             for (Heure value : heures) {
                 menu += value.getNumero() + ". " + value.getInterval_heur() + "\n";
             }
-        }
+
         return menu;
 
     }
 
 
     @Override
-    public String getSecondMenu(){
+    public String getSecondMenu(String inpuy){
         String menu = "CON Prolonger vos Rendez vous \n";
         menu += "1.pour vous \n";
         menu += "2.pour une autre personne \n";
@@ -205,6 +209,22 @@ public class MenuServiceImpl implements MenuService {
         String menu = "CON  Confirmer votre paiement\n";
         menu += "1.Confirmer \n";
         menu += "2.Annuler \n";
+        return menu ;
+    }
+
+    @Override
+    public String getJourSecond() {
+
+        String menu = "CON choisisez  le jour dont vous etes  dispo\n";
+
+        menu += "1.Lundi \n";
+        menu += "2.Mardi\n";
+        menu += "3.Mercredi\n";
+        menu += "4.Jeudi \n";
+        menu += "5.Vendredi\n";
+        menu += "6.Samedi\n";
+        menu += "7.Dimanche\n";
+
         return menu ;
     }
 }
