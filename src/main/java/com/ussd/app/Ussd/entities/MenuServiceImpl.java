@@ -144,9 +144,6 @@ public class MenuServiceImpl implements MenuService {
         if (ordre > size || ordre == 0){
             return "END Erreur de saisie";
         }
-        if( input.matches("^3\\*1\\*[1-7]")){
-            return  this.getJourSecond()    ;
-        }
 
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
