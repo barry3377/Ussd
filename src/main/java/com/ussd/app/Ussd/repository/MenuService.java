@@ -11,5 +11,5 @@ public interface MenuService {
     String getTelephone();
     String getSecondMenu(String input);
     String getConfirmation();
-    String getJourSecond();
+
 }

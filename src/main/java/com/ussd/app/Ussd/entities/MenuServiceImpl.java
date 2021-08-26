@@ -41,8 +41,7 @@ public class MenuServiceImpl implements MenuService {
                 return  this.getSecondMenu(input);
             case "confirmation":
                 return  this.getConfirmation();
-            case "JourSecond":
-                return  this.getJourSecond();
+
 
         }
 
@@ -127,7 +126,7 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getJours(String input) {
 
-        Long hopital = null;
+        /*Long hopital = null;
         int ordre = Integer.parseInt(input.split("\\*")[2]);
 
         if(input.split("\\*").length == 3){
@@ -143,7 +142,7 @@ public class MenuServiceImpl implements MenuService {
 
         if (ordre > size || ordre == 0){
             return "END Erreur de saisie";
-        }
+        }*/
 
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
@@ -209,19 +208,4 @@ public class MenuServiceImpl implements MenuService {
         return menu ;
     }
 
-    @Override
-    public String getJourSecond() {
-
-        String menu = "CON choisisez  le jour dont vous etes  dispo\n";
-
-        menu += "1.Lundi \n";
-        menu += "2.Mardi\n";
-        menu += "3.Mercredi\n";
-        menu += "4.Jeudi \n";
-        menu += "5.Vendredi\n";
-        menu += "6.Samedi\n";
-        menu += "7.Dimanche\n";
-
-        return menu ;
-    }
 }
