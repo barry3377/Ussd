@@ -97,18 +97,18 @@ public class MenuServiceImpl implements MenuService {
             return menu;
 
         } catch (Exception e){
+//
+//          id = input.split("\\*")[2];
+//          count = Integer.parseInt(id);
+//            Hopital hopital = hopitalRepository.findByNumero(count);
+//            Set<Departement> departements = hopital.getDepartements();
+//
+//            for(Departement value : departements) {
+//                menu +=value.getId()+". "+ value.getNom_service()+"\n";
+//            }
+//            return menu;
 
-          id = input.split("\\*")[2];
-          count = Integer.parseInt(id);
-            Hopital hopital = hopitalRepository.findByNumero(count);
-            List<Departement> departements = new ArrayList<>(hopital.getDepartements());
-
-            for(Departement value : departements) {
-                menu +=value.getId()+". "+ value.getNom_service()+"\n";
-            }
-            return menu;
-
-
+            return "END Eureur de saisie";
         }
 
 
