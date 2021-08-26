@@ -81,7 +81,7 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getService(String  input) {
         String menu = "CON choisisez un service\n";
-        String id = input.split("\\*")[2];
+        String id = input.split("\\*")[1];
         long count = Integer.parseInt(id);
 
         try {
