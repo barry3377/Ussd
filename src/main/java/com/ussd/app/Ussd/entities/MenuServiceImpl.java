@@ -38,7 +38,7 @@ public class MenuServiceImpl implements MenuService {
             case "telephoneProche":
                 return  this.getTelephone();
             case "prolongerRDV":
-                return  this.getSecondMenu(input);
+                return  this.getSecondMenu();
             case "confirmation":
                 return  this.getConfirmation();
 
@@ -177,10 +177,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public String getSecondMenu(String input){
-        Integer userInput = Integer.parseInt(input);
-
-        String menu = "CON Prolonger vos Rendez vous " + userInput +"\n";
+    public String getSecondMenu(){
+        String menu = "CON Prolonger vos Rendez vous \n";
         menu += "1.pour vous \n";
         menu += "2.pour une autre personne \n";
 
