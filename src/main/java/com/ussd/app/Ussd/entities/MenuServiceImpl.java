@@ -146,8 +146,8 @@ public class MenuServiceImpl implements MenuService {
     public String getHeure(String input) {
         String menu = "CON Les heures disponibles\n";
 
-        Long jour = Long.parseLong(input.split("\\*")[3]);
-        if(jour < 1 || jour > 7) {
+        Integer jour = Integer.parseInt(input.split("\\*")[3]);
+        if(jour > 7) {
             //return "END Erreur de saisie";
             menu += "Jour: "+jour+"\n";
         }
