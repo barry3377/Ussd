@@ -143,15 +143,22 @@ public class MenuServiceImpl implements MenuService {
             return "END Erreur de saisie";
         }
 
+        String regex = "^3";
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
-        menu += "1.Lundi \n";
-        menu += "2.Mardi\n";
-        menu += "3.Mercredi\n";
-        menu += "4.Jeudi \n";
-        menu += "5.Vendredi\n";
-        menu += "6.Samedi\n";
-        menu += "7.Dimanche\n";
+        if(input.matches(regex))
+        {
+
+            menu += "1.Lundi \n";
+            menu += "2.Mardi\n";
+            menu += "3.Mercredi\n";
+            menu += "4.Jeudi \n";
+            menu += "5.Vendredi\n";
+            menu += "6.Samedi\n";
+            menu += "7.Dimanche\n";
+        }
+
+
         return menu;
 
 
