@@ -144,16 +144,18 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String getHeure(String input) {
-        String menu = "CON Les heures disponibles\n";
+
+        Integer jour = Integer.parseInt(input.split("\\*")[3]);
+        System.out.println(jour);
+        if(jour < 1 || jour > 7) {
+            return "END Erreur de saisie";
+        }
+
+        String menu = "CON Les heures disponibles "+jour+"\n";
         List<Heure> heures = heureRepository.findAll(Sort.by(Sort.Order.asc("numero")));
 
         for( Heure value : heures) {
             menu +=value.getNumero()+". "+ value.getInterval_heur()+"\n";
-        }
-
-        Integer jour = Integer.parseInt(input.split("\\*")[3]);
-        if(jour < 1 || jour > 7) {
-            return "END Erreur de saisie";
         }
         return menu;
 
