@@ -153,9 +153,7 @@ public class MenuServiceImpl implements MenuService {
         menu += "5.Vendredi\n";
         menu += "6.Samedi\n";
         menu += "7.Dimanche\n";
-        if(   input.matches("^3\\*1\\*[1-7]")){
-            return menu;
-        }
+
         return menu;
 
 
@@ -170,15 +168,17 @@ public class MenuServiceImpl implements MenuService {
             //return "END Erreur de saisie";
             menu += "Jour: "+jour+"\n";
         }
+        if(   input.matches("^3\\*1\\*[1-7]")) {
+            List<Heure> heures = heureRepository.findAll(Sort.by(Sort.Order.asc("numero")));
 
-        List<Heure> heures = heureRepository.findAll(Sort.by(Sort.Order.asc("numero")));
-
-        for( Heure value : heures) {
-            menu +=value.getNumero()+". "+ value.getInterval_heur()+"\n";
+            for (Heure value : heures) {
+                menu += value.getNumero() + ". " + value.getInterval_heur() + "\n";
+            }
         }
         return menu;
 
     }
+
 
     @Override
     public String getSecondMenu(){
