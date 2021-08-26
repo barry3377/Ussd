@@ -134,7 +134,7 @@ public class MenuServiceImpl implements MenuService {
             hopital = Long.parseLong(input.split("\\*")[2]);
         }
 
-        if(input.split("\\*").length != 2){
+        if(input.split("\\*").length == 3 || input.split("\\*").length == 4){
             Hopital hop = hopitalRepository.findByNumero(hopital);
 
             int size = hop.getDepartements().size();
