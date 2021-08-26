@@ -44,14 +44,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+       // http.csrf().disable();
        http.authorizeRequests().antMatchers("/",
                 "/resources/**",
                 "/css/**",
                 "/fonts/**",
                 "/img/**",
                 "/js/**").permitAll()
-                .antMatchers("/new /user").permitAll().antMatchers("/").authenticated().anyRequest().permitAll()
+               .antMatchers("/").authenticated().anyRequest().permitAll()
 
                 .and().formLogin().usernameParameter("email").defaultSuccessUrl("/")
                 .permitAll().and().logout().logoutSuccessUrl("/").permitAll();

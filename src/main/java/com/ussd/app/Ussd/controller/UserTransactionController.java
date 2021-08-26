@@ -30,37 +30,36 @@ public class UserTransactionController {
     @GetMapping
 
     public ResponseEntity<String> processUssd(@RequestParam(name = "sessionId") String sessionId,
-                                              @RequestParam(name = "msisdn") String msisdn,
-                                              @RequestParam(name = "input") String input,
-                                              @RequestParam(name = "newReq") String newReq) {
-        if (newReq.equals("1") && input.isEmpty()) { // Nouvelle demande
+                                              @RequestParam(name = "phoneNumber") String msisdn,
+                                              @RequestParam(name = "text") String input) {
+        if (input.isEmpty()) { // Nouvelle demande
             return getMenu("1*1", input);
-        }else if(newReq.equals("0") && ( input.equals("2")||
+        }else if(( input.equals("2")||
                 (input.matches("^3\\*2")))){
             return getMenu("telephoneProche", input);
         }
-        else if(newReq.equals("0") && input.matches("3") ){
+        else if(input.matches("3") ){
             return getMenu("prolongerRDV", input);
         }
-        else if(newReq.equals("0") && (input.equals("1") || input.matches("^2\\*6[0-9]{8}"))){
+        else if((input.equals("1") || input.matches("^2\\*6[0-9]{8}"))){
             return getMenu("hopitaux", input);
-        }else if(newReq.equals("0") && (input.matches("^1\\*[0-9]+") || input.matches("^2\\*6[0-9]{8}\\*[0-9]+"))){
+        }else if((input.matches("^1\\*[0-9]+") || input.matches("^2\\*6[0-9]{8}\\*[0-9]+"))){
             return getMenu("services", input);
-        }else if(newReq.equals("0") && (input.matches("^1\\*[0-9]+\\*[0-9]+")
+        }else if((input.matches("^1\\*[0-9]+\\*[0-9]+")
                 || input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+")||
                 (input.matches("^3\\*1")
                         || (input.matches("^3\\*2\\*6[0-9]{8}") )))){
             return getMenu("jours", input);
-        }else if(newReq.equals("0") && (input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]")
+        }else if((input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]")
                 || input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]")||
                 (input.matches("^3\\*1\\*[1-7]") ||
                         (input.matches("^3\\*2\\*6[0-9]{8}\\*[0-9]+"))))){
             return getMenu("heures", input);
-        }else if(newReq.equals("0") &&( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+")
+        }else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+")
                 ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+"))){
             return getMenu("codeSecret", input);
         }
-        else if(newReq.equals("0") &&( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}")
+        else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}")
             ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}"))) {
             return getMenu("confirmation", input);
 

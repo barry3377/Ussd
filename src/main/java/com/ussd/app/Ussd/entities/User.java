@@ -19,7 +19,7 @@ public class User {
     private  String prenom;
     private String email;
     private  String  password;
-    private  String  confirmPassword;
+
 
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)

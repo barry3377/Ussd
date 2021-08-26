@@ -46,6 +46,7 @@ public class HeureController {
 
             return "heure/heure";
         }
+        heure.setNumero(heureRepository.count()+1);
        heureRepository.save(heure);
 
         model.addAttribute("heures",  heureRepository.findAll());

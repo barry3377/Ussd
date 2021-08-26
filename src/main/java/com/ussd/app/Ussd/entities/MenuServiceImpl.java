@@ -54,7 +54,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String getPrincipal() {
-        String menu = "Prise de Rendez vous\n";
+        String menu = "CON Prise de Rendez vous\n";
         menu += "1.pour vous \n";
         menu += "2.pour une autre personne \n";
         menu += "3.prolonger vos rendez vous\n";
@@ -64,7 +64,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String  getHopital(){
-        String menu = "Listes des Hopitaux\n";
+        String menu = "CON Listes des Hopitaux\n";
 
         List<Hopital> hopitals = hopitalRepository.findAll(Sort.by(Sort.Order.asc("numero")));
 
@@ -80,7 +80,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String getService(String  input) {
-        String menu = "choisisez un service\n";
+        String menu = "CON choisisez un service\n";
         String id = input.split("\\*")[1];
         long count = Integer.parseInt(id);
 
@@ -108,7 +108,7 @@ public class MenuServiceImpl implements MenuService {
             }
             return menu;*/
 
-            return "eureur de saisie";
+            return "END Eureur de saisie";
         }
 
 
@@ -125,10 +125,10 @@ public class MenuServiceImpl implements MenuService {
         int size = hop.getDepartements().size();
 
         if (ordre > size || ordre == 0){
-            return "Erreur de saisie";
+            return "END Erreur de saisie";
         }
 
-        String menu = "choisisez  le jour dont vous etes  dispo\n";
+        String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
         menu += "1.Lundi \n";
         menu += "2.Mardi\n";
@@ -144,7 +144,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String getHeure() {
-        String menu = "Les heures disponibles\n";
+        String menu = "CON Les heures disponibles\n";
         List<Heure> heures = heureRepository.findAll(Sort.by(Sort.Order.asc("numero")));
 
         for( Heure value : heures) {
@@ -156,7 +156,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String getSecondMenu(){
-        String menu = "Prolonger vos Rendez vous\n";
+        String menu = "CON Prolonger vos Rendez vous\n";
         menu += "1.pour vous \n";
         menu += "2.pour une autre personne \n";
         return menu;
@@ -174,7 +174,7 @@ public class MenuServiceImpl implements MenuService {
     }
     @Override
     public String getConfirmation() {
-        String menu = "Confirmer votre paiement\n";
+        String menu = "CON  Confirmer votre paiement\n";
         menu += "1.Confirmer \n";
         menu += "2.Annuler \n";
         return menu ;
