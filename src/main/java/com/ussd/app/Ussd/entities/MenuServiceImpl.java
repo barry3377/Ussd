@@ -143,7 +143,7 @@ public class MenuServiceImpl implements MenuService {
             return "END Erreur de saisie";
         }
 
-        String regex = "^3";
+        String regex = "^3\\*1";
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
         if(input.matches(regex))
