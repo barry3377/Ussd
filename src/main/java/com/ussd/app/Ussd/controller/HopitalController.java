@@ -57,7 +57,7 @@ public class HopitalController {
         }*/
 
         model.addAttribute("hopitals",     hopitalRepository.findAll());
-        return "Hopital/hopital";
+        return  "redirect:/hopitals";
     }
     @GetMapping(value="/edithopital/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {

@@ -40,7 +40,7 @@ public class DepartementController {
         model.addAttribute("services",  departementRepository.findAll());
 
 
-        return "service/service.html";
+        return  "redirect:/dep";
     }
 
     @GetMapping(value="/editservice/{id}")
