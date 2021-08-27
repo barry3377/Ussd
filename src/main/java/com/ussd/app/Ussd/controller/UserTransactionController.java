@@ -54,7 +54,7 @@ public class UserTransactionController {
             return getMenu("heures", input);
         }else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+")
                 ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+")  )||
-                (input.matches("^3\\*1\\*[1-7]+") )){
+                (input.matches("^3\\*1\\*[1-7]+\\*[0-9]+") )){
             return getMenu("codeSecret", input);
         }
         else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}")
