@@ -52,13 +52,13 @@ public class HeureController {
         model.addAttribute("heures",  heureRepository.findAll());
 
 
-        return "heure/lheureListe";
+        return  "redirect:/list";
     }
     @GetMapping(value="/edit/{id}")
     public String heureEdite(@PathVariable("id") long id, Model model) {
         Heure heure = heureRepository.findById(id).get();
         model.addAttribute("heure", heure);
-        return "heure/editheure";
+        return "heure/editHeure";
 
     }
     @GetMapping(value="/delete/{id}")
