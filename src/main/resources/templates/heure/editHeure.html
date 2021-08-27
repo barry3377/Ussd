@@ -73,8 +73,8 @@
                         <span>Hopital</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="general.html">Ajout un opital</a></li>
-                        <li><a href="buttons.html">liste des hopitaux</a></li>
+                        <li><a th:href="@{/new}">Ajout un hopital</a></li>
+                        <li><a th:href="@{/hopitals">liste des hopitaux</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -83,8 +83,8 @@
                         <span>Service</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="grids.html">Ajouter un service</a></li>
-                        <li><a href="calendar.html">Liste des services</a></li>
+                        <li><a th:href="@{/service}">Ajouter un service</a></li>
+                        <li><a th:href="@{/dep}">Liste des services</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -93,8 +93,8 @@
                         <span>Heure</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="blank.html">Nouvelle heure</a></li>
-                        <li><a href="login.html">listes des heures</a></li>
+                        <li><a th:href="@{/heure}">Nouvelle heure</a></li>
+                        <li><a th:href="@{/list}">listes des heures</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -103,7 +103,6 @@
                         <span>Rendez-vous</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="form_component.html">Ajouter un rendez-vous</a></li>
                         <li><a href="advanced_form_components.html">Liste des rendez-vous</a></li>
                     </ul>
                 </li>
@@ -113,8 +112,8 @@
                         <span>les Utilisateurs</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="basic_table.html">Ajouter un utilisateur</a></li>
-                        <li><a href="responsive_table.html">Liste des utilisateurs</a></li>
+                        <li><a th:href="@{/new/user}">Ajouter un utilisateur</a></li>
+                        <li><a th:href="@{/users}">Liste des utilisateurs</a></li>
                     </ul>
                 </li>
                 <li>

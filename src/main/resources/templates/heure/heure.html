@@ -71,8 +71,8 @@
                         <span>Hopital</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="general.html">Ajouter un hopital</a></li>
-                        <li><a href="buttons.html">Liste des hopitaux</a></li>
+                        <li><a th:href="@{/new}">Ajouter un hopital</a></li>
+                        <li><a th:href="@{/hopitals}">Liste des hopitaux</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -81,8 +81,8 @@
                         <span>Service</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="grids.html">Ajouter un service</a></li>
-                        <li><a href="calendar.html">Liste des services</a></li>
+                        <li><a th:href="@{/service}">Ajouter un service</a></li>
+                        <li><a th:href="@{/dep}">Liste des services</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -91,8 +91,8 @@
                         <span>Heure </span>
                     </a>
                     <ul class="sub">
-                        <li><a href="">Nouvelle heure</a></li>
-                        <li><a href="login.html">Liste des heures</a></li>
+                        <li><a th:href="@{/heure}">Nouvelle heure</a></li>
+                        <li><a th:href="@{/list}">Liste des heures</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -101,8 +101,8 @@
                         <span>Rendez-vous</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="form_component.html">Ajouter un rendez-vous</a></li>
-                        <li><a href="advanced_form_components.html">Liste des Rendez-vous</a></li>
+
+                        <li><a th:href="@{/list}">Liste des Rendez-vous</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -111,8 +111,8 @@
                         <span>Les utilisateurs</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="basic_table.html">Ajouter un utilisateurs</a></li>
-                        <li><a href="responsive_table.html">Liste des utilisateurs</a></li>
+                        <li><a th:href="@{/new/users}">Ajouter un utilisateurs</a></li>
+                        <li><a th:href="@{/users}">Liste des utilisateurs</a></li>
                     </ul>
                 </li>
                 <li>
