@@ -64,7 +64,7 @@ public class HopitalController {
         Hopital hopital = hopitalRepository.findById(id).get();
         model.addAttribute("hopital",hopital);
         model.addAttribute("depart",departementRepository.findAll());
-        return "hopital/editHopital";
+        return "Hopital/editHopital";
 
     }
     @GetMapping(value="/deleteHopital/{id}")
