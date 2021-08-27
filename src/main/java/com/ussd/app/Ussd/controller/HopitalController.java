@@ -23,11 +23,11 @@ public class HopitalController {
     private HopitalRepository hopitalRepository;
     @Autowired
       private DepartementRepository departementRepository;
-       @GetMapping(value="/hopit")
+       @GetMapping(value="/hopitals")
     public  String listHopital(Model model){
            List<Hopital> hopitals=hopitalRepository.findAll();
            model.addAttribute("hopitals",hopitals);
-           return "hopital/hopital";
+           return "Hopital/hopital";
        }
     @GetMapping
     public  List<Hopital> listsHopital(){
