@@ -31,7 +31,7 @@ public class HeureController {
         List<Heure>heures= (List<Heure>) heureRepository.findAll();
         model.addAttribute("heures",heures);
         model.addAttribute("heure",new Heure());
-        return "heure/lheureListe";
+        return "heure/heures";
     }
     @RequestMapping(value="/heure" ,method = RequestMethod.GET)
     public String addHeure(Model model){
