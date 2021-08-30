@@ -140,9 +140,8 @@
             <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
               <thead>
               <tr>
-                <th>Id</th>
-                <th>Nom Hopital</th>
-                <th>Services</th>
+                <th>id</th>
+                <th>Intervalle d'heure</th>
                 <th class="hidden-phone">Action</th>
 
               </tr>
@@ -152,21 +151,20 @@
                 <td class="hidden-phone" th:text="${h.id}"></td>
                 <td class="center hidden-phone" th:text="${h.interval_heur}"></td>
 
-                <td>
-                  <a th:href="@{/edithopital/{id}(id=${h.id})}">
-                    <button class="btn btn-success btn-xs">
-                      <i class="glyphicon glyphicon-pencil"></i>
-                      <span> Modifier</span>
-                    </button>
-                  </a>
-                  <a onclick="return confirm('Voulez vous vraiment supprimer ?')"
-                     th:href="@{/deleteHopital/{id}(id=${h.id})}">
-                    <button type="button" class="btn btn-theme04 btn-xs delete">
-                      <i class="glyphicon glyphicon-trash"></i>
-                      <span> Delete</span>
-                    </button>
-                  </a>
-                </td>
+
+                <a th:href="@{/edit/{id}(id=${h.id})}">
+                  <button class="btn btn-success btn-xs">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span> Modifier</span>
+                  </button>
+                </a>
+                <a onclick="return confirm('Voulez vous vraiment supprimer ?')"
+                   th:href="@{/delete/{id}(id=${h.id})}">
+                  <button type="button" class="btn btn-theme04 btn-xs delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span> Delete</span>
+                  </button>
+                </a>
               </tr>
               </tbody>
             </table>
