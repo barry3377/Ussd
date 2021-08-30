@@ -24,13 +24,12 @@ public class HeureController {
     @Autowired
     private HeureRepository heureRepository;
 
-
     @GetMapping(value="/list")
-    public String mariame(Model model){
+    public String resultat(Model model){
         List<Heure> heures=  heureRepository.findAll();
         model.addAttribute("heures",heures);
         model.addAttribute("heure",new Heure());
-        return "heures.html";
+        return "heure/heures";
     }
     @RequestMapping(value="/heure" ,method = RequestMethod.GET)
     public String addHeure(Model model){
