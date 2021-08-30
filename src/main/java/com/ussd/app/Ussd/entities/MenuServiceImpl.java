@@ -126,24 +126,30 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getJours(String input) {
 
-        Long hopital = null;
-        int ordre = Integer.parseInt(input.split("\\*")[2]);
+       Integer userinput = Integer.parseInt(input.split("\\*")[0]);
 
-        if(input.split("\\*").length == 3){
-            hopital = Long.parseLong(input.split("\\*")[1]);
-        }else if(input.split("\\*").length == 4){
-            hopital = Long.parseLong(input.split("\\*")[2]);
-        }
+       if(userinput!=3)
+       {
+
+            Long hopital = null;
+            int ordre = Integer.parseInt(input.split("\\*")[2]);
+
+            if(input.split("\\*").length == 3){
+                hopital = Long.parseLong(input.split("\\*")[1]);
+            }else if(input.split("\\*").length == 4){
+                hopital = Long.parseLong(input.split("\\*")[2]);
+            }
 
 
-        Hopital hop = hopitalRepository.findByNumero(hopital);
+            Hopital hop = hopitalRepository.findByNumero(hopital);
 
-       /* int size = hop.getDepartements().size();
+            int size = hop.getDepartements().size();
 
-        if (ordre > size || ordre == 0){
-            return "END Erreur de saisie";
-        }
-*/
+            if (ordre > size || ordre == 0){
+                return "END Erreur de saisie";
+            }
+       }
+
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
         menu += "1.Lundi \n";
