@@ -159,9 +159,9 @@
               </tr>
               </thead>
               <tbody>
-              <tr class="gradeC" th:each="h:${heure}">
-                <td class="hidden-phone" th:text="${h.id}"></td>
-                <td class="center hidden-phone" th:text="${h.interval_heur}"></td>
+              <tr class="gradeC" th:each="he:${heures}">
+                <td class="hidden-phone" th:text="${he.id}"></td>
+                <td class="center hidden-phone" th:text="${he.interval_heur}"></td>
                 <td>
 
                   <a th:href="@{/edit/{id}(id=${h.id})}">
