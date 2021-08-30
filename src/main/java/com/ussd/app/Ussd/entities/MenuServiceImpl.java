@@ -126,7 +126,7 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getJours(String input) {
 
-        /*Long hopital = null;
+        Long hopital = null;
         int ordre = Integer.parseInt(input.split("\\*")[2]);
 
         if(input.split("\\*").length == 3){
@@ -142,7 +142,7 @@ public class MenuServiceImpl implements MenuService {
 
         if (ordre > size || ordre == 0){
             return "END Erreur de saisie";
-        }*/
+        }
 
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
