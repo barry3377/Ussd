@@ -129,23 +129,23 @@ public class MenuServiceImpl implements MenuService {
        Integer userinput = Integer.parseInt(input.split("\\*")[0]);
 
 
-            Long hopital = null;
-            int ordre = Integer.parseInt(input.split("\\*")[2]);
-
-            if(input.split("\\*").length == 3){
-                hopital = Long.parseLong(input.split("\\*")[1]);
-            }else if(input.split("\\*").length == 4){
-                hopital = Long.parseLong(input.split("\\*")[2]);
-            }
-
-
-            Hopital hop = hopitalRepository.findByNumero(hopital);
-
-            int size = hop.getDepartements().size();
-
-            if (ordre > size || ordre == 0){
-                return "END Erreur de saisie";
-            }
+//            Long hopital = null;
+//            int ordre = Integer.parseInt(input.split("\\*")[2]);
+//
+//            if(input.split("\\*").length == 3){
+//                hopital = Long.parseLong(input.split("\\*")[1]);
+//            }else if(input.split("\\*").length == 4){
+//                hopital = Long.parseLong(input.split("\\*")[2]);
+//            }
+//
+//
+//            Hopital hop = hopitalRepository.findByNumero(hopital);
+//
+//            int size = hop.getDepartements().size();
+//
+//            if (ordre > size || ordre == 0){
+//                return "END Erreur de saisie";
+//            }
 
 
 
