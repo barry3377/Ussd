@@ -4,7 +4,6 @@ package com.ussd.app.Ussd.controller;
 import com.ussd.app.Ussd.entities.Heure;
 
 
-import com.ussd.app.Ussd.entities.Hopital;
 import com.ussd.app.Ussd.repository.HeureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+
 import java.util.stream.Collectors;
 
 

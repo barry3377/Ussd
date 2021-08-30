@@ -1,7 +1,5 @@
 package com.ussd.app.Ussd.Dto;
 
-import net.javaguides.springboot.springsecurity.constraint.FieldMatchValidator;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.Documented;
