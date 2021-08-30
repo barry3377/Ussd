@@ -36,7 +36,7 @@ public class HeureController {
 
         Heure heure=new Heure();
         model.addAttribute("heure",heure);
-        return "heure/heures";
+        return "heure/heure";
     }
     @RequestMapping(value="/saveHeure", method=RequestMethod.POST)
     public String saverTIME(Model model, @Valid Heure heure, BindingResult h ){
