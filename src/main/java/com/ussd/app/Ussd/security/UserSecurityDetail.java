@@ -1,7 +1,7 @@
 package com.ussd.app.Ussd.security;
 
 import com.ussd.app.Ussd.entities.User;
-import com.ussd.app.Ussd.service.UserService;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
