@@ -128,9 +128,6 @@ public class MenuServiceImpl implements MenuService {
 
        Integer userinput = Integer.parseInt(input.split("\\*")[0]);
 
-       if(userinput!=3)
-       {
-
             Long hopital = null;
             int ordre = Integer.parseInt(input.split("\\*")[2]);
 
@@ -148,7 +145,7 @@ public class MenuServiceImpl implements MenuService {
             if (ordre > size || ordre == 0){
                 return "END Erreur de saisie";
             }
-       }
+
 
         String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 
