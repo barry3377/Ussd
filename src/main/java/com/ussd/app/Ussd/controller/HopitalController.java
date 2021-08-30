@@ -29,11 +29,7 @@ public class HopitalController {
            model.addAttribute("hopitals",hopitals);
            return "Hopital/hopital";
        }
-    @GetMapping
-    public  List<Hopital> listsHopital(){
-        List<Hopital> hopitals=hopitalRepository.findAll();
-        return hopitals;
-    }
+
 
        @GetMapping(value="/new")
     public  String addHopital(Model model){
