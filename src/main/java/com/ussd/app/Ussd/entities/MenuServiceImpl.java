@@ -126,7 +126,7 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getJours(String input) {
 
-       Integer userinput = Integer.parseInt(input.split("\\*")[0]);
+       //Integer userinput = Integer.parseInt(input.split("\\*")[0]);
 
             Long hopital = null;
             int ordre = Integer.parseInt(input.split("\\*")[2]);
@@ -184,7 +184,7 @@ public class MenuServiceImpl implements MenuService {
 
 
     @Override
-    public String getSecondMenu(String inpuy){
+    public String getSecondMenu(String input){
         String menu = "CON Prolonger vos Rendez vous \n";
         menu += "1.pour vous \n";
         menu += "2.pour une autre personne \n";
@@ -196,11 +196,11 @@ public class MenuServiceImpl implements MenuService {
     public String getCodeSecret(String input) {
         Long ordre = Long.parseLong(input.split("\\*")[4]);
     //    Heure heures = heureRepository.findByNumero(ordre);
-        List<Heure> heure = heureRepository.findAll();
+       /* List<Heure> heure = heureRepository.findAll();
         int size = heure.size();
         if (ordre > size || ordre == 0){
             return "Erreur de saisie";
-        }
+        }*/
         return "CON Entrer votre code secret";
     }
     @Override
