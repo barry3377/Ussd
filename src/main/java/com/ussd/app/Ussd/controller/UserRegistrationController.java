@@ -1,10 +1,8 @@
 package com.ussd.app.Ussd.controller;
 
-import com.ussd.app.Ussd.Dto.UserRegistrationDto;
 import com.ussd.app.Ussd.entities.User;
 import com.ussd.app.Ussd.repository.RoleRepository;
 import com.ussd.app.Ussd.repository.UserRepository;
-import com.ussd.app.Ussd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;

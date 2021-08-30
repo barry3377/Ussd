@@ -1,12 +1,10 @@
 package com.ussd.app.Ussd.service;
 
-import com.ussd.app.Ussd.Dto.UserRegistrationDto;
 import com.ussd.app.Ussd.entities.Role;
 import com.ussd.app.Ussd.entities.User;
 import com.ussd.app.Ussd.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 @Service

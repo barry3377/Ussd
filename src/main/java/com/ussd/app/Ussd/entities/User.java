@@ -1,13 +1,9 @@
 package com.ussd.app.Ussd.entities;
 
-import com.ussd.app.Ussd.Dto.FieldMatch;
-
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-@FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match")
 @Entity
 
 @Table(name="ussd_user", uniqueConstraints = @UniqueConstraint(columnNames ="email" ))
