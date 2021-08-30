@@ -4,6 +4,7 @@ package com.ussd.app.Ussd.controller;
 import com.ussd.app.Ussd.entities.Heure;
 
 
+import com.ussd.app.Ussd.entities.Hopital;
 import com.ussd.app.Ussd.repository.HeureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,10 +26,9 @@ public class HeureController {
     private HeureRepository heureRepository;
 
     @GetMapping(value="/list")
-    public String resultat(Model model){
-        List<Heure> heures=  heureRepository.findAll();
+    public  String listHeure(Model model){
+        List<Heure> heures=heureRepository.findAll();
         model.addAttribute("heures",heures);
-        model.addAttribute("heure",new Heure());
         return "heure/heures";
     }
     @RequestMapping(value="/heure" ,method = RequestMethod.GET)
