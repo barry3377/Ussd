@@ -168,11 +168,11 @@ public class MenuServiceImpl implements MenuService {
     public String getHeure(String input) {
         String menu = "CON Les heures disponibles\n";
 
-        Integer jour = Integer.parseInt(input.split("\\*")[3]);
-        if(jour > 7) {
-            //return "END Erreur de saisie";
-            menu += "Jour: "+jour+"\n";
-        }
+//        Integer jour = Integer.parseInt(input.split("\\*")[3]);
+//        if(jour > 7) {
+//            //return "END Erreur de saisie";
+//            menu += "Jour: "+jour+"\n";
+//        }
 
             List<Heure> heures = heureRepository.findAll(Sort.by(Sort.Order.asc("numero")));
 
