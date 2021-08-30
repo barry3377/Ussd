@@ -11,7 +11,7 @@ public class HomeController {
     }
     @RequestMapping(value="/lout")
     public  String login(){
-        return "templates/login.html";
+        return "/login.html";
     }
 
 }
