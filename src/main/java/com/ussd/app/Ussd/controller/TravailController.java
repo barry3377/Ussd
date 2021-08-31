@@ -16,7 +16,7 @@ public class TravailController {
     JoursRepository joursRepository;
     DepartementRepository departementRepository;
     HopitalRepository hopitalRepository;
-    @GetMapping(value="/new")
+    @GetMapping(value="/travail")
     public  String addHopital(Model model){
 
         model.addAttribute("hopitals",hopitalRepository.findAll());
