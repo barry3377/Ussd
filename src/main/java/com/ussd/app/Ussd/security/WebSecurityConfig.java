@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin().usernameParameter("email").defaultSuccessUrl("/")
                 .permitAll().and().logout().logoutSuccessUrl("/").permitAll();*/
         http.authorizeRequests()
-                .antMatchers("/app/secure/**").hasAnyRole("ADMIN","USER")
+                .antMatchers("/").authenticated().anyRequest().permitAll()
                 .and().formLogin()  //login configuration
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
