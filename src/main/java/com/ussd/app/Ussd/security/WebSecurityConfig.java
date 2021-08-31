@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
        http.csrf().disable();
-      /* http.authorizeRequests().antMatchers("/",
+       http.authorizeRequests().antMatchers("/",
                 "/resources/**",
                 "/css/**",
                 "/fonts/**",
@@ -54,19 +54,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                .antMatchers("/").authenticated().anyRequest().permitAll()
 
                 .and().formLogin().usernameParameter("email").defaultSuccessUrl("/")
-                .permitAll().and().logout().logoutSuccessUrl("/").permitAll();*/
-        http.authorizeRequests()
-                .antMatchers("/").authenticated().anyRequest().permitAll()
-                .and().formLogin()  //login configuration
-                .loginPage("/login")
-                .loginProcessingUrl("/login")
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/")
-                .and().logout()    //logout configuration
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .and().exceptionHandling() //exception handling configuration
-                .accessDeniedPage("/app/error");
+                .permitAll().and().logout().logoutSuccessUrl("/").permitAll();
+//   /*     http.authorizeRequests()
+//                .antMatchers("/").authenticated().anyRequest().permitAll()
+//                .and().formLogin()  //login configuration
+//                .loginPage("/login")
+//                .loginProcessingUrl("/login")
+//                .usernameParameter("username")
+//                .passwordParameter("password")
+//                .defaultSuccessUrl("/")
+//                .and().logout()    //logout configuration
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/login")
+//                .and().exceptionHandling() //exception handling configuration
+//                .accessDeniedPage("/app/error");
     }
 }
