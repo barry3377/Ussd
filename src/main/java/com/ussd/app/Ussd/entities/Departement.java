@@ -4,7 +4,6 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,7 +23,7 @@ public class Departement {
     private Set<Hopital> hopitals = new HashSet<>();
 
     @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<RendezVous> items;
+    private List<Travail> items;
 
     public Departement() {
     }

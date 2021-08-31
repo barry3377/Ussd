@@ -3,20 +3,19 @@ package com.ussd.app.Ussd.entities;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-public class Jours {
+public class Jour {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom_jour;
     @OneToMany(mappedBy = "jours", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<RendezVous> items;
-    public Jours() {
+    private List<Travail> items;
+    public Jour() {
     }
 
-    public Jours(String nom_jour) {
+    public Jour(String nom_jour) {
         this.nom_jour = nom_jour;
     }
 
@@ -36,13 +35,18 @@ public class Jours {
         this.nom_jour = nom_jour;
     }
 
-    public List<RendezVous> getItems() {
+    public List<Travail> getItems() {
         return items;
     }
 
-    public void setItems(List<RendezVous> items) {
+    public void setItems(List<Travail> items) {
         this.items = items;
     }
 
-
+    @Override
+    public String toString() {
+        return "Jour{" +
+                "nom_jour='" + nom_jour + '\'' +
+                '}';
+    }
 }

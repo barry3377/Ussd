@@ -1,18 +1,16 @@
 package com.ussd.app.Ussd.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "rendezvous")
-public class RendezVous {
+public class Travail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "jour_id", nullable = false)
-    private Jours jours;
+    private Jour jours;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Heure heures;
@@ -23,12 +21,12 @@ public class RendezVous {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "hopital_id", nullable = false)
     private Hopital hopital;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "userTrans_id", nullable = false)
-    private  UserTransaction userTransaction;
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "userTrans_id", nullable = false)
+//    private  UserTransaction userTransaction;
 
 
-    public RendezVous() {
+    public Travail() {
     }
 
 
@@ -40,11 +38,11 @@ public class RendezVous {
     public void setId(long id) {
         this.id = id;
     }
-    public Jours getJours() {
+    public Jour getJours() {
         return jours;
     }
 
-    public void setJours(Jours jours) {
+    public void setJours(Jour jours) {
         this.jours = jours;
     }
 
@@ -73,11 +71,11 @@ public class RendezVous {
         this.hopital = hopital;
     }
 
-    public UserTransaction getUserTransaction() {
-        return userTransaction;
-    }
-
-    public void setUserTransaction(UserTransaction userTransaction) {
-        this.userTransaction = userTransaction;
-    }
+//    public UserTransaction getUserTransaction() {
+//        return userTransaction;
+//    }
+//
+//    public void setUserTransaction(UserTransaction userTransaction) {
+//        this.userTransaction = userTransaction;
+//    }
 }

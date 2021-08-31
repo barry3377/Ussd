@@ -27,14 +27,14 @@ public class Hopital {
    /* @ManyToMany
     private Collection<Departement> departements ;*/
     @OneToMany(mappedBy = "hopital", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<RendezVous> items;
+    private List<Travail> items;
 
 
-    public List<RendezVous> getItems() {
+    public List<Travail> getItems() {
         return items;
     }
 
-    public void setItems(List<RendezVous> items) {
+    public void setItems(List<Travail> items) {
         this.items = items;
     }
 

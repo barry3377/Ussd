@@ -12,7 +12,7 @@ public class UserTransaction {
     private  Long id;
     private String msisdn;
     @OneToMany(mappedBy = "userTransaction", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<RendezVous> items;
+    private List<Travail> items;
     private LocalDateTime createdAt;
 
 
@@ -35,11 +35,11 @@ public class UserTransaction {
         this.msisdn = msisdn;
     }
 
-    public List<RendezVous> getItems() {
+    public List<Travail> getItems() {
         return items;
     }
 
-    public void setItems(List<RendezVous> items) {
+    public void setItems(List<Travail> items) {
         this.items = items;
     }
 
