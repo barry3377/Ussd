@@ -17,7 +17,7 @@ public class TravailController {
     DepartementRepository departementRepository;
     HopitalRepository hopitalRepository;
     @GetMapping(value="/travail")
-    public  String addHopital(Model model){
+    public  String addTravaill(Model model){
 
         model.addAttribute("hopitals",hopitalRepository.findAll());
         model.addAttribute("depart",departementRepository.findAll());
@@ -31,7 +31,7 @@ public class TravailController {
     }
 
     @PostMapping(value="/saveTravail")
-    public  String addHopi(Travail travail, Model model){
+    public  String addTravailH(Travail travail, Model model){
       // hopital.setNumero(hopitalRepository.count()+1);
         travailRepository.save(travail);
 
@@ -40,6 +40,6 @@ public class TravailController {
 
 
         model.addAttribute("travails",     hopitalRepository.findAll());
-        return  "redirect:/travails";
+        return  "Bonjours";
     }
 }
