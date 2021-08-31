@@ -145,7 +145,7 @@
                     <div class="checkbox" th:each="ser : ${depart}" >
                       <label>
 
-                        <input  type="checkbox" name="departements"
+                        <input  type="checkbox" name="departement"
                                 th:text="${ser.nom_service} "
                                 th:value="${ser.id}">
 
@@ -158,7 +158,7 @@
                   <div class="checkbox" th:each="h : ${hopitals}" >
                     <label>
 
-                      <input  type="select" name="departement"
+                      <input  type="select" name="hopital"
                               th:text="${h.nom_hopital} "
                               th:value="${h.id}">
 
