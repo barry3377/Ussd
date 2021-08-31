@@ -137,59 +137,55 @@
               <form class="cmxform form-horizontal style-form" id="commentForm" method="post"
                     th:action="@{/saveTravail}"
                     th:object="${travail}" >
-                <div class="form-group ">
-
-                <div class="form-group ">
 
 
-                    <div class="checkbox" th:each="ser : ${depart}" >
-                      <label>
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Service</label>
+                  <div class="col-lg-10">
+                    <select class="form-control" name="departement">
+                      <option type="text" th:each="ser:${depart}" th:value="${ser.nom_service}"
+                              th:text="${ser.nom_service}"></option>
+                    </select>
 
-                        <input  type="checkbox" name="departement"
-                                th:text="${ser.nom_service} "
-                                th:value="${ser.id}">
-
-                      </label>
-                    </div>
                   </div>
                 </div>
 
 
-                  <div class="checkbox" th:each="h : ${hopitals}" >
-                    <label>
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">hopital</label>
+                  <div class="col-lg-10">
+                    <select class="form-control" name="hopital">
+                      <option type="text" th:each="h:${hopitals}" th:value="${h.nom_hopital}"
+                              th:text="${h.nom_hopital}"></option>
+                    </select>
 
-                      <input  type="select" name="hopital"
-                              th:text="${h.nom_hopital} "
-                              th:value="${h.id}">
-
-                    </label>
                   </div>
                 </div>
-            </div>
 
-          <div class="select" th:each="j : ${jours}" >
-            <label>
 
-              <input  type="select" name="jours"
-                      th:text="${j.nom_jour} "
-                      th:value="${j.id}">
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Jour</label>
+                  <div class="col-lg-10">
+                    <select class="form-control" name="jours">
+                      <option type="text" th:each="j:${jours}" th:value="${j.nom_jour}"
+                              th:text="${j.nom_jour}"></option>
+                    </select>
 
-            </label>
-          </div>
-        </div>
-      </div>
+                  </div>
+                </div>
 
-      <div class="select" th:each="he: ${heures}" >
-        <label>
 
-          <input  type="select" name="heures"
-                  th:text="${he.interval_heur} "
-                  th:value="${he.id}">
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Jour</label>
+                  <div class="col-lg-10">
+                    <select class="form-control" name="heures">
+                      <option type="text" th:each="he:${heures}" th:value="${he.interval_heur}"
+                              th:text="${he.nom_jour}"></option>
+                    </select>
 
-        </label>
-      </div>
-      </div>
-      </div>
+                  </div>
+                </div>
+
 
             <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">
