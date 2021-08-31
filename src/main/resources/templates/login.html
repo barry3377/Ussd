@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title> Spring Boot MVC Security using Thymeleaf </title>
+    <link rel="stylesheet" href="/css/styles.css"/>
 </head>
 <body>
-Bonjours::::::::::::::::::::::::::::::::::::::::
+<h3> Spring Boot MVC Security using Thymeleaf </h3>
+<p th:if="${param.error}" class="error">
+    Bad Credentials
+</p>
+<form th:action="@{/login}" method="POST">
+    email: <input type="text" name="username"/> <br/><br/>
+    Password: <input type="password" name="password"/> <br/><br/>
+    <input type="submit" value="Login"/>
+</form>
 </body>
 </html>
