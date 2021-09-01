@@ -15,6 +15,8 @@ private HeureRepository heureRepository;
 JoursRepository joursRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(UssdApplication.class, args);
+//		Jour jour=new Jour("Lundi");
+//		joursRepository.save(jour)
 	}
 
 	@Override
