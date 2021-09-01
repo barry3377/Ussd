@@ -12,17 +12,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class UssdApplication implements CommandLineRunner {
 @Autowired
 private HeureRepository heureRepository;
+	@Autowired
 JoursRepository joursRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(UssdApplication.class, args);
-//		Jour jour=new Jour("Lundi");
-//		joursRepository.save(jour)
+
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-//		Jour jour=new Jour("Lundi");
-//		joursRepository.save(jour);
+		Jour jour=new Jour("Lundi");
+	joursRepository.save(jour);
 
 		heureRepository.findAll().forEach(heure -> {
 			System.out.println(heure.toString());
