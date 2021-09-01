@@ -34,7 +34,7 @@ public class TravailController {
         model.addAttribute("heures",heureRepository.findAll());
         Travail travail =new Travail();
         model.addAttribute(" travail ", travail);
-        return "travail/new";
+        return "Travail/new";
     }
 
     @PostMapping(value="/saveTravail")
