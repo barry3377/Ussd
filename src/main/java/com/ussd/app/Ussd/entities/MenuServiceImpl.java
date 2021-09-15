@@ -87,11 +87,14 @@ public class MenuServiceImpl implements MenuService {
 
         List<Travail> travails = travailRepository.getGroup();
 
-        if (travails.size() > 0) {
-            for (int i=0; i < travails.size(); i++){
-                menu += travails.get(i).getDepartement().getId()+". " + travails.get(i).getDepartement().getNom_service()+"\n";
-            }
-        }
+        int s = travails.size();
+        menu += "Taille: "+s;
+
+//        if (travails.size() > 0) {
+//            for (int i=0; i < travails.size(); i++){
+//                menu += travails.get(i).getDepartement().getId()+". " + travails.get(i).getDepartement().getNom_service()+"\n";
+//            }
+//        }
 
 
         return menu;
