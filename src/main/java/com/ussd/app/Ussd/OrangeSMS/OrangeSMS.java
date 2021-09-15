@@ -48,7 +48,7 @@ public class OrangeSMS {
     }
 
     public boolean sendMessage(String telephone, String message, String token) {
-telephone="+";
+
         /*String corps = U.objectBuilder()
                 .add("outboundSMSMessageRequest")
                         .add(U.objectBuilder()
