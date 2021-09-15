@@ -12,5 +12,4 @@ public interface MenuService {
     String getSecondMenu(String input);
     String getConfirmation();
     String getRendezVours(String input, String telephone);
-
 }
