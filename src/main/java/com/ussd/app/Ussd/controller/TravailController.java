@@ -1,5 +1,6 @@
 package com.ussd.app.Ussd.controller;
 
+import com.ussd.app.Ussd.entities.Heure;
 import com.ussd.app.Ussd.entities.Hopital;
 import com.ussd.app.Ussd.entities.Travail;
 import com.ussd.app.Ussd.repository.*;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -22,7 +24,14 @@ public class TravailController {
     DepartementRepository departementRepository;
     @Autowired
     HopitalRepository hopitalRepository;
+    private HttpServletRequest request;
 
+    @GetMapping(value="/travails")
+    public  String listHopital(Model model){
+        List<Travail> travails=travailRepository.findAll();
+        model.addAttribute("travails",travails);
+        return "Travail/travail";
+    }
     @GetMapping(value="/travail")
     public  String addTravaill(Model model){
 
@@ -38,15 +47,13 @@ public class TravailController {
     }
 
     @PostMapping(value="/saveTravail")
-    public  String addTravailH(Travail travail, Model model){
-      // hopital.setNumero(hopitalRepository.count()+1);
+    public  String addTravailH(HttpServletRequest request, Travail travail, Model model){
+
         travailRepository.save(travail);
 
         List<Travail> travails = travailRepository.findAll();
 
-
-
         model.addAttribute("travails",     hopitalRepository.findAll());
-        return  "Bonjours";
+        return  "redirect:/travails";
     }
 }

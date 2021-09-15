@@ -15,7 +15,7 @@ public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="departement_id")
-    private long id;
+    private Long id;
     private  String nom_service;
     private  Boolean deleted=Boolean.FALSE;
 
@@ -24,7 +24,8 @@ public class Departement {
 
     @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Travail> items;
-
+    @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RendezVous> item;
     public Departement() {
     }
 
@@ -70,4 +71,5 @@ public class Departement {
     public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
+
 }

@@ -11,8 +11,8 @@ public class UserTransaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     private String msisdn;
-   /* @OneToMany(mappedBy = "userTransaction", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Travail> items;*/
+    @OneToMany(mappedBy = "userTransaction", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RendezVous> items;
     private LocalDateTime createdAt;
 
 

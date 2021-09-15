@@ -2,6 +2,7 @@ package com.ussd.app.Ussd.repository;
 
 import com.ussd.app.Ussd.entities.Hopital;
 import com.ussd.app.Ussd.entities.Menu;
+import com.ussd.app.Ussd.entities.Travail;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 

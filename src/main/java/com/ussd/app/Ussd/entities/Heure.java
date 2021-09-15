@@ -1,9 +1,8 @@
 package com.ussd.app.Ussd.entities;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -13,8 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import java.util.List;
+
+
+
 @Entity
-@Data
+
 @SQLDelete(sql = "UPDATE heure SET deleted=true WHERE id=?")
 @Where(clause = "deleted=false")
 public class Heure {
@@ -25,6 +28,12 @@ public class Heure {
     private String interval_heur;
     private Long numero;
     private boolean deleted=Boolean.FALSE;
+//    @ManyToMany(mappedBy="heures")
+//    private Set<Travail> travails = new HashSet<>();
+@OneToMany(mappedBy = "heures", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+private List<Travail> items;
+    @OneToMany(mappedBy = "heures", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RendezVous> item;
     public Heure() {
     }
 
@@ -50,10 +59,7 @@ public class Heure {
 
     @Override
     public String toString() {
-        return "Heure{" +
-                "id=" + id +
-                ", interval_heur='" + interval_heur + '\'' +
-                '}';
+        return this.interval_heur ;
     }
 
     public Long getNumero() {
@@ -70,6 +76,14 @@ public class Heure {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public List<Travail> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Travail> items) {
+        this.items = items;
     }
 }
 

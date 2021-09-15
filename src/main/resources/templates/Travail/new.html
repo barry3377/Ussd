@@ -143,7 +143,7 @@
                   <label class="col-lg-2 control-label">Service</label>
                   <div class="col-lg-10">
                     <select class="form-control" name="departement">
-                      <option type="text" th:each="ser:${depart}" th:value="${ser.nom_service}"
+                      <option  th:each="ser:${depart}" th:value="${ser.id}"
                               th:text="${ser.nom_service}"></option>
                     </select>
 
@@ -155,7 +155,7 @@
                   <label class="col-lg-2 control-label">hopital</label>
                   <div class="col-lg-10">
                     <select class="form-control" name="hopital">
-                      <option type="text" th:each="h:${hopitals}" th:value="${h.nom_hopital}"
+                      <option  th:each="h:${hopitals}" th:value="${h.id}"
                               th:text="${h.nom_hopital}"></option>
                     </select>
 
@@ -167,7 +167,7 @@
                   <label class="col-lg-2 control-label">Jour</label>
                   <div class="col-lg-10">
                     <select class="form-control" name="jours">
-                      <option type="text" th:each="j:${jours}" th:value="${j.nom_jour}"
+                      <option  th:each="j:${jours}" th:value="${j.id}"
                               th:text="${j.nom_jour}"></option>
                     </select>
 
@@ -178,8 +178,8 @@
                 <div class="form-group has-success">
                   <label class="col-lg-2 control-label">heure</label>
                   <div class="col-lg-10">
-                    <select class="form-control" name="heures">
-                      <option type="text" th:each="he:${heures}" th:value="${he.interval_heur}"
+                    <select class="form-control" name="heures" multiple="multiple">
+                      <option  th:each="he:${heures}" th:value="${he.id}"
                               th:text="${he.interval_heur}"></option>
                     </select>
 

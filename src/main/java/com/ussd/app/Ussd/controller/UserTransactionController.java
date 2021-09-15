@@ -1,5 +1,6 @@
 package com.ussd.app.Ussd.controller;
 
+import com.ussd.app.Ussd.entities.RendezVous;
 import com.ussd.app.Ussd.repository.*;
 import com.ussd.app.Ussd.utils.Jours;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,54 +31,59 @@ public class UserTransactionController {
                                               @RequestParam(name = "phoneNumber") String msisdn,
                                               @RequestParam(name = "text") String input) {
         if (input.isEmpty()) { // Nouvelle demande
-            return getMenu("1*1", input);
+            return getMenu("1*1", input, "");
         }else if(( input.equals("2")||
                 (input.matches("^3\\*2")))){
-            return getMenu("telephoneProche", input);
+            return getMenu("telephoneProche", input, "");
         }
         else if(input.matches("3") ){
-            return getMenu("prolongerRDV", input);
+            return getMenu("prolongerRDV", input, "");
         }
         else if((input.equals("1") || input.matches("^2\\*6[0-9]{8}"))){
-            return getMenu("hopitaux", input);
+            return getMenu("services", input, "");
         }else if((input.matches("^1\\*[0-9]+") || input.matches("^2\\*6[0-9]{8}\\*[0-9]+"))){
-            return getMenu("services", input);
+            return getMenu("hopitaux", input, "");
         }else if(input.matches("^1\\*[0-9]+\\*[0-9]+")
                 || input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+")||
                 input.matches("^3\\*1")
                         || input.matches("^3\\*2\\*6[0-9]{8}") ){
-            return getMenu("jours", input);
+            return getMenu("jours", input, "");
         }else if((input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]")
                 || input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]")||
                 (input.matches("^3\\*1\\*[1-7]+") ||
                         (input.matches("^3\\*2\\*6[0-9]{8}\\*[0-9]+"))))){
-            return getMenu("heures", input);
+            return getMenu("heures", input, "");
         }else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+")
                 ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+")   )){
-            return getMenu("codeSecret", input);
+            return getMenu("codeSecret", input, "");
         }
         else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}")
             ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}"))) {
-            return getMenu("confirmation", input);
+            return getMenu("confirmation", input, "");
+
+        }
+        else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}+\\*1")
+                ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}+\\*1 "))) {
+            System.out.println(msisdn);
+            return getMenu("rendezVous", input, msisdn);
 
         }
 
-
-
+      /*  RendezVous rendezVous=new RendezVous();
+        rendezVous.setHopital();*/
     	return ResponseEntity.ok()
                 .header("FreeFlow", "FB")
 				.body("Mauvaise entree ou \nmenu en cours de developpement !!!");
 }
 
 
-
-    private ResponseEntity<String> getMenu(String level, String input) {
+    private ResponseEntity<String> getMenu(String level, String input, String telephone) {
         // Recuperation du men
 
 
         return ResponseEntity.ok()
-               // .header("FreeFlow", menu.getFreeFlow())
-                .body(menuService.getMenu(level, input));
+                // .header("FreeFlow", menu.getFreeFlow())
+                .body(menuService.getMenu(level, input, telephone));
     }
 
 }

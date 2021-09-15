@@ -28,7 +28,8 @@ public class Hopital {
     private Collection<Departement> departements ;*/
     @OneToMany(mappedBy = "hopital", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Travail> items;
-
+    @OneToMany(mappedBy = "hopital", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RendezVous> item;
 
     public List<Travail> getItems() {
         return items;
@@ -79,6 +80,11 @@ public class Hopital {
 
     public void setNumero(Long numero) {
         this.numero = numero;
+    }
+
+    @Override
+    public String toString() {
+        return this.nom_hopital;
     }
 }
 

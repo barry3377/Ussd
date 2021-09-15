@@ -5,6 +5,7 @@ import com.ussd.app.Ussd.entities.Hopital;
 
 import com.ussd.app.Ussd.repository.DepartementRepository;
 import com.ussd.app.Ussd.repository.HopitalRepository;
+import com.ussd.app.Ussd.repository.JoursRepository;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -23,6 +24,8 @@ public class HopitalController {
     private HopitalRepository hopitalRepository;
     @Autowired
       private DepartementRepository departementRepository;
+    @Autowired
+    private JoursRepository joursRepository;
        @GetMapping(value="/hopitals")
     public  String listHopital(Model model){
            List<Hopital> hopitals=hopitalRepository.findAll();
@@ -35,6 +38,7 @@ public class HopitalController {
     public  String addHopital(Model model){
 
            model.addAttribute("depart",departementRepository.findAll());
+           model.addAttribute("jours",joursRepository.findAll());
            Hopital hopital=new Hopital();
            model.addAttribute("hopital ",hopital);
            return "Hopital/add.html";
