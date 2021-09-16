@@ -25,8 +25,7 @@ public class UserTransactionController {
 
 
 
-    @PostMapping
-
+    @PostMapping(path = "api/sante/ussd")
     public ResponseEntity<String> processUssd(@RequestParam(name = "sessionId") String sessionId,
                                               @RequestParam(name = "phoneNumber") String msisdn,
                                               @RequestParam(name = "text") String input) {
@@ -64,7 +63,6 @@ public class UserTransactionController {
         }
         else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}+\\*1")
                 ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]\\*[0-9]+\\*[0-9]{4,5}+\\*1 "))) {
-            System.out.println(msisdn);
             return getMenu("rendezVous", input,"");
 
         }
