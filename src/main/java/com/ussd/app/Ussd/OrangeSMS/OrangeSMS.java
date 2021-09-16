@@ -1,16 +1,9 @@
 package com.ussd.app.Ussd.OrangeSMS;
 
 
-import com.github.underscore.lodash.U;
 import com.squareup.okhttp.*;
-import lombok.Builder;
-import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
-import net.minidev.json.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.io.IOException;
 
 public class OrangeSMS {
 
@@ -36,7 +29,7 @@ public class OrangeSMS {
 
             String jsonData = response.body().string();
 
-            JSONParser parser = new JSONParser();
+            JSONParser parser = new JSONParser(JSONParser.MODE_PERMISSIVE);
             JSONObject jsonObject = (JSONObject) parser.parse(jsonData);
             JSONObject myjson = new JSONObject(jsonObject);
 
@@ -66,7 +59,7 @@ public class OrangeSMS {
         RequestBody body = RequestBody.create(mediaType, "{\"outboundSMSMessageRequest\":{\r\n    " +
                 "    \"address\": \"tel:"+telephone+"\",\r\n        \"senderAddress\":\"tel:+224627044179\",\r\n     " +
                 "   \"outboundSMSTextMessage\":{\r\n            \"message\":\""+message+"\"\r\n        }\r\n    }\r\n}");
-        System.out.println("l"+telephone);
+        System.out.println(telephone);
         Request request = new Request.Builder()
                 .url("https://api.orange.com/smsmessaging/v1/outbound/tel:+224627044179/requests")
                 .method("POST", body)
