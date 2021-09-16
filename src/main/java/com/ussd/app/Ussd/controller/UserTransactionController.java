@@ -25,7 +25,7 @@ public class UserTransactionController {
 
 
 
-    @PostMapping(path = "api/sante/ussd")
+    @PostMapping
     public ResponseEntity<String> processUssd(@RequestParam(name = "sessionId") String sessionId,
                                               @RequestParam(name = "phoneNumber") String msisdn,
                                               @RequestParam(name = "text") String input) {
