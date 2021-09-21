@@ -88,7 +88,7 @@ public class MenuServiceImpl implements MenuService {
     public String getService(String  input) {
         String menu = "CON choisisez un service\n";
 //
-//        List<Travail> travails = travailRepository.getGroup();
+    List<Travail> travails = travailRepository.getGroup();
 //
 //System.out.println("bonjour");
 //
