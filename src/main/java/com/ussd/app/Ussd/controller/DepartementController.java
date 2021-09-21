@@ -30,18 +30,17 @@ public class DepartementController {
         model.addAttribute("departement",departement);
         return "service/addService.html";
     }
-    @PostMapping(value="/saveService")
+    @PostMapping(value="/valeur")
     public String saveDep(Model model,  Departement departement, BindingResult h ){
 //        if(h.hasErrors()){
 //
 //            return "service/addService";
 //        }
-        System.out.println("Bonjour la belle");
         departementRepository.save(departement);
         model.addAttribute("services",  departementRepository.findAll());
 
 
-        return  "bonjour";
+        return  "redirect:/dep";
     }
 
     @GetMapping(value="/editservice/{id}")
