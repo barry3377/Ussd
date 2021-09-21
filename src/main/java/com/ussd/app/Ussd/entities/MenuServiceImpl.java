@@ -3,7 +3,7 @@ package com.ussd.app.Ussd.entities;
 
 
 import ch.qos.logback.core.net.SyslogOutputStream;
-import com.ussd.app.Ussd.OrangeSMS.OrangeSMS;
+
 import com.ussd.app.Ussd.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -55,9 +55,9 @@ public class MenuServiceImpl implements MenuService {
                 return  this.getSecondMenu(input);
             case "confirmation":
                 return  this.getConfirmation();
-            case "rendezVous":
-                return  this.getRendezVours(input, telephone);
-
+//            case "rendezVous":
+//                return  this.getRendezVours(input, telephone);
+//
 
         }
 
@@ -315,70 +315,70 @@ public class MenuServiceImpl implements MenuService {
         menu += "2.Annuler \n";
         return menu ;
     }
-    @Override
-    public String getRendezVours(String input, String telephone) {
 
-        String ticket = "435353";
-
-        int id_hopital = 0;
-        Long id_service = 0L;
-        int id_jour = 0;
-        int id_heure = 0;
-
-        if(input.split("\\*").length == 7) {
-            id_hopital = Integer.parseInt(input.split("\\*")[2]);
-            id_service = Long.parseLong(input.split("\\*")[1]);
-            id_jour = Integer.parseInt(input.split("\\*")[3]);
-            id_heure = Integer.parseInt(input.split("\\*")[4]);
-        }else if(input.split("\\*").length == 5) {
-//            id_hopital = input.split("\\*")[2];
-//            id_service = input.split("\\*")[3];
-//            id_jour = input.split("\\*")[4];
-//            id_jour = input.split("\\*")[3];
-        }
-
-        //User
-        UserTransaction usert = new UserTransaction();
-        usert.setMsisdn(telephone);
-        UserTransaction user = userTransactionRepository.save(usert);
-
-        //Departement
-        Departement dep = departementRepository.getById(id_service);
-
-        //Hopital
-        Hopital hopital = hopitalRepository.findByNumero((long) id_hopital);
-
-        //Heure
-        Heure heure = heureRepository.findByNumero((long) id_heure);
-
-        //Jour
-        Jour jour = jourRepository.getById((long) id_jour);
-
-        RendezVous rendezVous = new RendezVous();
-        rendezVous.setHopital(hopital);
-        rendezVous.setHeures(heure);
-        rendezVous.setDepartement(dep);
-        rendezVous.setJours(jour);
-        rendezVous.setTicket(ticket);
-        rendezVous.setUserTransaction(user);
-
-        rendezVous =  rendezVousRepository.save(rendezVous);
-
-        if (rendezVous != null) {
-            OrangeSMS sms = new OrangeSMS();
-            String token = sms.getToken();
-//            telephone = "+224"+telephone;
-//           System.out.println(telephone);
-         String message =
-                    "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
-            boolean b = sms.sendMessage(telephone, message, token);
-            System.out.println("Status: "+telephone);
-            System.out.println("Status: "+token);
-
-            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation";
-        }else {
-            return "END Une erreur inconnu s'est produit";
-        }
-    }
+//    public String getRendezVours(String input, String telephone) {
+//
+//        String ticket = "435353";
+//
+//        int id_hopital = 0;
+//        Long id_service = 0L;
+//        int id_jour = 0;
+//        int id_heure = 0;
+//
+//        if(input.split("\\*").length == 7) {
+//            id_hopital = Integer.parseInt(input.split("\\*")[2]);
+//            id_service = Long.parseLong(input.split("\\*")[1]);
+//            id_jour = Integer.parseInt(input.split("\\*")[3]);
+//            id_heure = Integer.parseInt(input.split("\\*")[4]);
+//        }else if(input.split("\\*").length == 5) {
+////            id_hopital = input.split("\\*")[2];
+////            id_service = input.split("\\*")[3];
+////            id_jour = input.split("\\*")[4];
+////            id_jour = input.split("\\*")[3];
+//        }
+//
+//        //User
+//        UserTransaction usert = new UserTransaction();
+//        usert.setMsisdn(telephone);
+//        UserTransaction user = userTransactionRepository.save(usert);
+//
+//        //Departement
+//        Departement dep = departementRepository.getById(id_service);
+//
+//        //Hopital
+//        Hopital hopital = hopitalRepository.findByNumero((long) id_hopital);
+//
+//        //Heure
+//        Heure heure = heureRepository.findByNumero((long) id_heure);
+//
+//        //Jour
+//        Jour jour = jourRepository.getById((long) id_jour);
+//
+//        RendezVous rendezVous = new RendezVous();
+//        rendezVous.setHopital(hopital);
+//        rendezVous.setHeures(heure);
+//        rendezVous.setDepartement(dep);
+//        rendezVous.setJours(jour);
+//        rendezVous.setTicket(ticket);
+//        rendezVous.setUserTransaction(user);
+//
+//        rendezVous =  rendezVousRepository.save(rendezVous);
+//
+//        if (rendezVous != null) {
+//            OrangeSMS sms = new OrangeSMS();
+//            String token = sms.getToken();
+////            telephone = "+224"+telephone;
+////           System.out.println(telephone);
+//         String message =
+//                    "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
+//            boolean b = sms.sendMessage(telephone, message, token);
+//            System.out.println("Status: "+telephone);
+//            System.out.println("Status: "+token);
+//
+//            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation";
+//        }else {
+//            return "END Une erreur inconnu s'est produit";
+//        }
+//    }
 
 }
