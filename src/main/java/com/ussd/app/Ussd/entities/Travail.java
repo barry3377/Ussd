@@ -10,15 +10,21 @@ public class Travail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "jour_id", nullable = false)
+    @JoinColumn(name = "jour_id", nullable = false,insertable = false)
     private Jour jours;
+
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-            @JoinColumn(name = "heure_id", nullable = false)
+    @JoinColumn(name = "heure_id", nullable = false)
     private Heure heures;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "departement_id", nullable = false)
     private Departement departement;
+    private Integer departement_id;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "hopital_id", nullable = false)
     private Hopital hopital;
