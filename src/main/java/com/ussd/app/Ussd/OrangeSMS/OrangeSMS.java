@@ -4,7 +4,9 @@ package com.ussd.app.Ussd.OrangeSMS;
 import com.squareup.okhttp.*;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OrangeSMS {
 
     public  OkHttpClient client;
@@ -40,8 +42,9 @@ public class OrangeSMS {
 
     }
 
-    public boolean sendMessage(String telephone, String message, String token) {
+    public boolean sendMessage(String telephone, String message) {
         String phone = "+"+telephone;
+        String token = getToken();
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody body = RequestBody.create(mediaType, "{\"outboundSMSMessageRequest\":{\r\n    " +
                 "    \"address\": \"tel:"+phone+"\",\r\n        \"senderAddress\":\"tel:+224627044179\",\r\n     " +
