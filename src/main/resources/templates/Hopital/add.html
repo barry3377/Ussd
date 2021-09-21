@@ -175,29 +175,29 @@
                   </div>
                 </div>
               </form>
-              <div class="accordion" id="accordionExample">
-                <div class="accordion-item" th:each="ser : ${depart}">
-                  <h2 class="accordion-header" id="${hopital.id}">
+<!--              <div class="accordion" id="accordionExample">-->
+<!--                <div class="accordion-item" th:each="ser : ${depart}">-->
+<!--                  <h2 class="accordion-header" id="${hopital.id}">-->
 
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-                            name="departements"
-                            th:text="${ser.nom_service} "
-                            th:value="${ser.id}"
+<!--                    <button class="accordion-button" type="button" data-bs-toggle="collapse"-->
+<!--                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"-->
+<!--                            name="departements"-->
+<!--                            th:text="${ser.nom_service} "-->
+<!--                            th:value="${ser.id}"-->
 
-                    >
-<!--                      Accordion Item #1-->
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="${ser.id}" data-bs-parent="#accordionExample">
-                    <div class="accordion-body"  th:each="j : ${jours}" >
-                      <strong
-                              th:text="${j.nom_jour} "
-                             ></strong>
+<!--                    >-->
+<!--&lt;!&ndash;                      Accordion Item #1&ndash;&gt;-->
+<!--                    </button>-->
+<!--                  </h2>-->
+<!--                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="${ser.id}" data-bs-parent="#accordionExample">-->
+<!--                    <div class="accordion-body"  th:each="j : ${jours}" >-->
+<!--                      <strong-->
+<!--                              th:text="${j.nom_jour} "-->
+<!--                             ></strong>-->
 
-                    </div>
-                  </div>
-                </div>
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
 
           </div>
           <!-- /form-panel -->
