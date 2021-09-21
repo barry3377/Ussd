@@ -36,11 +36,12 @@ public class DepartementController {
 //
 //            return "service/addService";
 //        }
+        System.out.println("Bonjour la belle");
         departementRepository.save(departement);
         model.addAttribute("services",  departementRepository.findAll());
 
 
-        return  "service/service.html";
+        return  "bonjour";
     }
 
     @GetMapping(value="/editservice/{id}")

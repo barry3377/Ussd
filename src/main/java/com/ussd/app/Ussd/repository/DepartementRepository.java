@@ -8,7 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
-@Repository
 public interface DepartementRepository extends CrudRepository<Departement,Long> {
 
     @Query(value = "SELECT * FROM departement WHERE departement_id = ?1 LIMIT 1", nativeQuery = true)
