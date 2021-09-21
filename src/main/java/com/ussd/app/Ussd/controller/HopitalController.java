@@ -48,7 +48,7 @@ public class HopitalController {
     public  String addHopi(Hopital hopital, Model model){
     hopital.setNumero(hopitalRepository.count()+1);
     hopitalRepository.save(hopital);
-    System.out.println("+++++++++++++ " + hopital.getDepartements().size());
+//    System.out.println("+++++++++++++ " + hopital.getDepartements().size());
     List<Hopital> hopitals = hopitalRepository.findAll();
 
     /*System.out.println("voici la taille du tab" +hopitals.size());
