@@ -30,7 +30,7 @@ public class DepartementController {
         model.addAttribute("departement",departement);
         return "service/addService.html";
     }
-    @PostMapping(value="/valeur")
+    @PostMapping(value="/saveService")
     public String saveDep(Model model,  Departement departement, BindingResult h ){
 //        if(h.hasErrors()){
 //
