@@ -24,7 +24,8 @@ public class Departement {
 
     @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Travail> items;
-    @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "departement")
     private List<RendezVous> item;
     public Departement() {
     }
