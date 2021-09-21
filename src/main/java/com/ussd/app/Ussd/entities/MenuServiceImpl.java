@@ -59,9 +59,8 @@ public class MenuServiceImpl implements MenuService {
                 return  this.getSecondMenu(input);
             case "confirmation":
                 return  this.getConfirmation();
-//            case "rendezVous":
-//                return  this.getRendezVours(input, telephone);
-//
+               case "rendezVous":
+             return  this.getRendezVours(input, telephone);
 
         }
 
