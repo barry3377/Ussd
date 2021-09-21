@@ -19,11 +19,11 @@ public class Hopital {
     private String nom_hopital;
     private Long numero;
     private boolean deleted=Boolean.FALSE;
-    @ManyToMany( cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinTable(name = "hopital_service",
-            joinColumns = @JoinColumn(name = "hopital_id"),
-            inverseJoinColumns = @JoinColumn(name = "service_id"))
-    private Set<Departement> departements = new HashSet<>();
+//    @ManyToMany( cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//    @JoinTable(name = "hopital_service",
+//            joinColumns = @JoinColumn(name = "hopital_id"),
+//            inverseJoinColumns = @JoinColumn(name = "service_id"))
+//    private Set<Departement> departements = new HashSet<>();
    /* @ManyToMany
     private Collection<Departement> departements ;*/
     @OneToMany(mappedBy = "hopital", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -61,18 +61,18 @@ public class Hopital {
     public Hopital(String nom_hopital) {
         this.nom_hopital = nom_hopital;
     }
-
-    public Set<Departement> getDepartements() {
-        return departements;
-    }
-
-    public void setDepartements(Set<Departement> departements) {
-        this.departements = departements;
-    }
-
-    public Hopital(Set<Departement> departements) {
-        this.departements = departements;
-    }
+//
+//    public Set<Departement> getDepartements() {
+//        return departements;
+//    }
+//
+//    public void setDepartements(Set<Departement> departements) {
+//        this.departements = departements;
+//    }
+//
+//    public Hopital(Set<Departement> departements) {
+//        this.departements = departements;
+//    }
 
     public Long getNumero() {
         return numero;
