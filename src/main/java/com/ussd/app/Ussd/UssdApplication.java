@@ -21,17 +21,17 @@ JoursRepository joursRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
-		Jour jour=new Jour("Lundi");
-		joursRepository.save(jour);
-		Jour jour0=new Jour("Mardi");
-	joursRepository.save(jour0);
-		Jour jour1=new Jour("Mercredi");
-		joursRepository.save(jour1);
-
-		Jour jour3=new Jour("Jeudi");
-		joursRepository.save(jour3);
-		Jour jour4=new Jour("Vendredi");
-		joursRepository.save(jour4);
+//		Jour jour=new Jour("Lundi");
+//		joursRepository.save(jour);
+//		Jour jour0=new Jour("Mardi");
+//	joursRepository.save(jour0);
+//		Jour jour1=new Jour("Mercredi");
+//		joursRepository.save(jour1);
+//
+//		Jour jour3=new Jour("Jeudi");
+//		joursRepository.save(jour3);
+//		Jour jour4=new Jour("Vendredi");
+//		joursRepository.save(jour4);
 
 		heureRepository.findAll().forEach(heure -> {
 			System.out.println(heure.toString());
