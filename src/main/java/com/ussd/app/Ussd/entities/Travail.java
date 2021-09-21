@@ -23,7 +23,7 @@ public class Travail {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "departement_id", nullable = false)
     private Departement departement;
-    private Integer departement_id;
+
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "hopital_id", nullable = false)
