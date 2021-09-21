@@ -142,7 +142,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nom Hopital</th>
-                                <th>Services</th>
+<!--                                <th>Services</th>-->
                                 <th class="hidden-phone">Action</th>
 
                             </tr>
@@ -151,7 +151,7 @@
                             <tr class="gradeB" th:each="h:${hopitals}">
                                 <td class="hidden-phone" th:text="${h.id}"></td>
                                 <td class="center hidden-phone" th:text="${h.nom_hopital}"></td>
-                                <td class="center hidden-phone" th:text="${h.departements}"></td>
+<!--                                <td class="center hidden-phone" th:text="${h.departements}"></td>-->
                                 <td>
                                     <a th:href="@{/edithopital/{id}(id=${h.id})}">
                                         <button class="btn btn-success btn-xs">
