@@ -31,7 +31,7 @@ public class DepartementController {
         return "service/addService.html";
     }
     @RequestMapping(value="/saveService", method=RequestMethod.POST)
-    public String saveDep(Model model, @Valid Departement departement, BindingResult h ){
+    public String saveDep(Model model,  Departement departement, BindingResult h ){
         if(h.hasErrors()){
 
             return "service/addService";
