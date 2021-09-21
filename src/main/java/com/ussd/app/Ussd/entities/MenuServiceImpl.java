@@ -87,16 +87,16 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getService(String  input) {
         String menu = "CON choisisez un service\n";
-
-        List<Travail> travails = travailRepository.getGroup();
-
-System.out.println("bonjour");
-
-        if (travails.size() > 0) {
-            for (int i=0; i < travails.size(); i++){
-                menu += travails.get(i).getDepartement().getId()+". " + travails.get(i).getDepartement().getNom_service()+"\n";
-            }
-        }
+//
+//        List<Travail> travails = travailRepository.getGroup();
+//
+//System.out.println("bonjour");
+//
+//        if (travails.size() > 0) {
+//            for (int i=0; i < travails.size(); i++){
+//                menu += travails.get(i).getDepartement().getId()+". " + travails.get(i).getDepartement().getNom_service()+"\n";
+//            }
+//        }
 
 
         return menu;
