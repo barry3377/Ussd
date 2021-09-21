@@ -14,7 +14,7 @@ import java.util.Set;
 public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="departement_id")
+  @Column(name="departement_id")
     private Long id;
     private  String nom_service;
     private  Boolean deleted=Boolean.FALSE;
@@ -29,17 +29,19 @@ public class Departement {
     public Departement() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Departement(String nom_service) {
         this.nom_service = nom_service;
     }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNom_service() {
         return nom_service;
