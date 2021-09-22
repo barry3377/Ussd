@@ -43,13 +43,13 @@ public class OrangeSMS {
     }
 
     public boolean sendMessage(String telephone, String message) {
-        String phone = "+"+telephone;
+
         String token = getToken();
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody body = RequestBody.create(mediaType, "{\"outboundSMSMessageRequest\":{\r\n    " +
-                "    \"address\": \"tel:"+phone+"\",\r\n        \"senderAddress\":\"tel:+224627044179\",\r\n     " +
+                "    \"address\": \"tel:"+telephone+"\",\r\n        \"senderAddress\":\"tel:+224627044179\",\r\n     " +
                 "   \"outboundSMSTextMessage\":{\r\n            \"message\":\""+message+"\"\r\n        }\r\n    }\r\n}");
-        System.out.println(phone);
+        System.out.println(telephone);
         Request request = new Request.Builder()
                 .url("https://api.orange.com/smsmessaging/v1/outbound/tel:+224627044179/requests")
                 .method("POST", body)

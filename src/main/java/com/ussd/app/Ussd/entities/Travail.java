@@ -12,7 +12,7 @@ public class Travail {
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "jour_id", nullable = false,insertable = false)
+    @JoinColumn(name = "jour_id", nullable = false)
     private Jour jours;
 
 
@@ -20,10 +20,10 @@ public class Travail {
     @JoinColumn(name = "heure_id", nullable = false)
     private Heure heures;
 
-    @ManyToOne()
-    @JoinColumn(name = "departement_id", nullable = false,insertable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "departement_id", nullable = false)
     private Departement departement;
-    private Integer departement_id;
+
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
