@@ -93,10 +93,11 @@ public class MenuServiceImpl implements MenuService {
 
         System.out.println("Size : " + travails.size());
 
+
         if (travails.size() > 0) {
-            for (int i=0; i < travails.size(); i++){
-                System.out.println("@@@@@@@@ data " + travails.get(i));
-                Long depart_id = travails.get(i).getDepartementId().longValue();
+            for( ITravail iTravail: travails){
+                System.out.println("@@@@@@@@ data " + iTravail);
+                Long depart_id = iTravail.getDepartementId();
                 System.out.println("Departement ID " + depart_id);
                 Departement departement = departementRepository.findById(depart_id).get();
                 menu += departement.getId() +". " + departement.getNom_service()+"\n";
