@@ -18,12 +18,13 @@ public interface TravailRepository extends JpaRepository<Travail,Long > {
     @Query(value = "SELECT * FROM travail WHERE hopital_id = ?1 AND departement_id = ?2 GROUP BY jour_id", nativeQuery = true)
     List<Travail> getByHopitalAndService(long id, long service);
 
-    @Query(value = "SELECT * FROM travail WHERE hopital_id = ?1 AND departement_id = ?2 GROUP BY heure_id", nativeQuery = true)
+    @Query(value = "SELECT * FROM travail WHERE hopital_id = ?1 AND " +
+            "departement_id = ?2 GROUP BY heure_id", nativeQuery = true)
     List<Travail> getByHopitalServiceAndJour(long id, long service);
 
     @Query(value = "SELECT departement_id as departementId FROM travail GROUP BY departement_id ", nativeQuery = true)
     List<ITravail> getGroup();
 
-    @Query(value = "SELECT * FROM travail WHERE travail.departement_id = ?1 GROUP BY hopital_id", nativeQuery = true)
+    @Query(value = "SELECT departement_id as departementId  FROM travail WHERE travail.departementId = ?1 GROUP BY hopital_id", nativeQuery = true)
     List<Travail> getByService(int service);
 }
