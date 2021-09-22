@@ -6,6 +6,7 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 
 import com.ussd.app.Ussd.OrangeSMS.OrangeSMS;
 import com.ussd.app.Ussd.repository.*;
+import com.ussd.app.Ussd.utils.HTravail;
 import com.ussd.app.Ussd.utils.ITravail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -96,9 +97,7 @@ public class MenuServiceImpl implements MenuService {
 
         if (travails.size() > 0) {
             for( ITravail iTravail: travails){
-                System.out.println("@@@@@@@@ data " + iTravail);
                 Long depart_id = iTravail.getDepartementId();
-                System.out.println("Departement ID " + depart_id);
                 Departement departement = departementRepository.findById(depart_id).get();
                 menu += departement.getId() +". " + departement.getNom_service()+"\n";
             }
@@ -162,12 +161,18 @@ public class MenuServiceImpl implements MenuService {
             id_service = input.split("\\*")[3];
         }
 
-        List<Travail> travails = travailRepository.getByService(Integer.parseInt(id_service));
+        List<HTravail> travails = travailRepository.getByService(Integer.parseInt(id_service));
 
 
-        for (int i=0; i < travails.size(); i++){
-            menu += travails.get(i).getHopital().getNumero()+". " + travails.get(i).getHopital().getNom_hopital()+"\n";
-        }
+            for( HTravail HTravail: travails){
+                Long hopital_id = HTravail.getHopitalId();
+                Hopital hopital= hopitalRepository.findById(hopital_id).get();
+                menu += hopital.getId() +". " + hopital.getNom_hopital()+"\n";
+            }
+
+//        for (int i=0; i < travails.size(); i++){
+//            menu += travails.get(i).getHopital().getNumero()+". " + travails.get(i).getHopital().getNom_hopital()+"\n";
+//        }
 
         return menu;
     }
