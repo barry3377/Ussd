@@ -91,10 +91,10 @@ public class MenuServiceImpl implements MenuService {
         String menu = "CON choisisez un service\n";
         List<ITravail> travails = travailRepository.getGroup();
 
-        System.out.println(travails.get(0));
+        System.out.println("Size : " + travails.size());
 
         if (travails.size() > 0) {
-            for (int i=0; i < travails.size(); i++){
+            for (int i=1; i <= travails.size(); i++){
                 System.out.println("@@@@@@@@ data " + travails.get(i));
                 Departement departement = departementRepository.findById(travails.get(i).getDepartementId()).get();
                 menu += departement.getId() +". " + departement.getNom_service()+"\n";
