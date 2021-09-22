@@ -20,7 +20,7 @@ public interface TravailRepository extends JpaRepository<Travail,Long > {
     @Query(value = "SELECT * FROM travail WHERE hopital_id = ?1 AND departement_id = ?2 GROUP BY heure_id", nativeQuery = true)
     List<Travail> getByHopitalServiceAndJour(long id, long service);
 
-    @Query(value ="SELECT DISTINCT ON (departement_id) FROM Travail ", nativeQuery = true)
+    @Query(value = "SELECT T  FROM Travail T  GROUP BY T.departement")
     List<Travail> getGroup();
 
     @Query(value = "SELECT * FROM travail WHERE travail.departement_id = ?1 GROUP BY hopital_id", nativeQuery = true)
