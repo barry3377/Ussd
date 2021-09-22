@@ -170,10 +170,6 @@ public class MenuServiceImpl implements MenuService {
                 menu += hopital.getId() +". " + hopital.getNom_hopital()+"\n";
             }
 
-//        for (int i=0; i < travails.size(); i++){
-//            menu += travails.get(i).getHopital().getNumero()+". " + travails.get(i).getHopital().getNom_hopital()+"\n";
-//        }
-
         return menu;
     }
 
