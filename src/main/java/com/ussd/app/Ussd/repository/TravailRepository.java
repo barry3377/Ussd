@@ -1,6 +1,7 @@
 package com.ussd.app.Ussd.repository;
 
 import com.ussd.app.Ussd.entities.Travail;
+import com.ussd.app.Ussd.utils.ITravail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -21,7 +22,7 @@ public interface TravailRepository extends JpaRepository<Travail,Long > {
     List<Travail> getByHopitalServiceAndJour(long id, long service);
 
     @Query(value = "SELECT * FROM travail GROUP BY departement_id ", nativeQuery = true)
-    List<Travail> getGroup();
+    List<ITravail> getGroup();
 
     @Query(value = "SELECT * FROM travail WHERE travail.departement_id = ?1 GROUP BY hopital_id", nativeQuery = true)
     List<Travail> getByService(int service);

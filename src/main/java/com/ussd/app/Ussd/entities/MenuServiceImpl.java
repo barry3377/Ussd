@@ -6,6 +6,7 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 
 import com.ussd.app.Ussd.OrangeSMS.OrangeSMS;
 import com.ussd.app.Ussd.repository.*;
+import com.ussd.app.Ussd.utils.ITravail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Autowired
     RendezVousRepository rendezVousRepository;
+
 
     @Autowired
     OrangeSMS orangeSMS;
@@ -87,13 +89,14 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getService(String  input) {
         String menu = "CON choisisez un service\n";
-        List<Travail> travails = travailRepository.getGroup();
+        List<ITravail> travails = travailRepository.getGroup();
 
         System.out.println(travails.get(0));
 
         if (travails.size() > 0) {
             for (int i=0; i < travails.size(); i++){
-                menu += travails.get(i).getDepartement().getId()+". " + travails.get(i).getDepartement().getNom_service()+"\n";
+                Departement departement = departementRepository.findById(travails.get(i).getDepartementId()).get();
+                menu += departement.getId() +". " + departement.getNom_service()+"\n";
             }
         }
 
