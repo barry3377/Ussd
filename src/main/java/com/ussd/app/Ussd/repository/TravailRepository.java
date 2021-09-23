@@ -5,6 +5,7 @@ import com.ussd.app.Ussd.utils.HTravail;
 import com.ussd.app.Ussd.utils.ITravail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +28,6 @@ public interface TravailRepository extends JpaRepository<Travail,Long > {
     List<ITravail> getGroup();
 
     @Query(value = "SELECT hopital_id as hopitalId FROM travail " +
-            " WHERE travail.departement_id= 1 GROUP BY hopital_id", nativeQuery = true)
-    List<HTravail> getByService(int service);
+            " WHERE travail.departement_id=:service GROUP BY hopital_id", nativeQuery = true)
+    List<HTravail> getByService(@Param(value = "service")  int service);
 }
