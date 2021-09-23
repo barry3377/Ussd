@@ -177,15 +177,15 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getJours(String input) {
 
-        String menu = "CON choisisez  le jour dont vous etes  dispo\n";
+//
+//        List<Jour> jours = jourRepository.findAll();
+//
+//        for (int i=0; i < jours.size(); i++){
+//            if (i > 4) continue;
+//            menu += jours.get(i).getId() +". " + jours.get(i).getNom_jour()+"\n";
+//        }
 
-        List<Jour> jours = jourRepository.findAll();
-
-        for (int i=0; i < jours.size(); i++){
-            if (i > 4) continue;
-            menu += jours.get(i).getId() +". " + jours.get(i).getNom_jour()+"\n";
-        }
-        return menu;
+      return  " CON saisisez votre date et excepter les samedis et les dimanches \n";
 
         //Integer userinput = Integer.parseInt(input.split("\\*")[0]);
 
@@ -252,7 +252,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String getHeure(String input) {
-        String menu = "CON Les heures disponibles\n";
+        String menu = "CON Les heu                                                                      res disponibles\n";
 
         String id_hopital = "0";
         String id_service = "0";

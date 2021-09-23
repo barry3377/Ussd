@@ -47,7 +47,7 @@ public class UserTransactionController {
                 input.matches("^3\\*1")
                         || input.matches("^3\\*2\\*6[0-9]{8}") ){
             return getMenu("jours", input,"");
-        }else if((input.matches("^1\\*[0-9]+\\*[0-9]+\\*[1-7]")
+        }else if((input.matches("^1\\*[0-9]+\\*[0-9]+[0-9]{1,2}/[0,9]{1,2}/^2[0-9]{3}")
                 || input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[1-7]")||
                 (input.matches("^3\\*1\\*[1-7]+") ||
                         (input.matches("^3\\*2\\*6[0-9]{8}\\*[0-9]+"))))){
