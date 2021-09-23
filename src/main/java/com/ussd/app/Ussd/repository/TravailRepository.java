@@ -26,6 +26,7 @@ public interface TravailRepository extends JpaRepository<Travail,Long > {
     @Query(value = "SELECT departement_id as departementId FROM travail GROUP BY departement_id ", nativeQuery = true)
     List<ITravail> getGroup();
 
-    @Query(value = "SELECT departement_id as departementId ,hopital_id as hopitalId FROM travail  WHERE travail.departement_id= ?1 GROUP BY hopital_id", nativeQuery = true)
+    @Query(value = "SELECT hopital_id as hopitalId FROM travail " +
+            " WHERE travail.departement_id= 1 GROUP BY hopital_id", nativeQuery = true)
     List<HTravail> getByService(int service);
 }
