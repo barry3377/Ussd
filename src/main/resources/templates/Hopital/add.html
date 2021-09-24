@@ -150,21 +150,21 @@
                 <div class="form-group ">
 
                   <div class="col-lg-10">
-                    <!--<th:block  th:each="service:${departements}">
+                    <th:block  th:each="service:${departements}">
                       <div> <input  id="services" name="services" type="checkbox" th:field=*{services}"
                               th:value="${service.id}"    th:field="${service.nom_service}"   >
                       </div>
 
-                    </th:block>-->
-<!--                    <div class="checkbox" th:each="ser : ${depart}" >-->
-<!--                      <label>-->
+                    </th:block>
+                    <div class="checkbox" th:each="ser : ${depart}" >
+                      <label>
 
-<!--                        <input  type="checkbox" name="departements"-->
-<!--                                th:text="${ser.nom_service} "-->
-<!--                                th:value="${ser.id}">-->
+                        <input  type="checkbox" name="departements"
+                                th:text="${ser.nom_service} "
+                                th:value="${ser.id}">
 
-<!--                      </label>-->
-<!--                    </div>-->
+                      </label>
+                    </div>
                   </div>
                 </div>
 

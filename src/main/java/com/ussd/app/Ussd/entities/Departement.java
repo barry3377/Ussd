@@ -18,9 +18,9 @@ public class Departement {
     private Long id;
     private  String nom_service;
     private  Boolean deleted=Boolean.FALSE;
-//
-//    @ManyToMany(mappedBy="departements")
-//    private Set<Hopital> hopitals = new HashSet<>();
+
+    @ManyToMany(mappedBy="departements")
+    private Set<Hopital> hopitals = new HashSet<>();
 
     @OneToMany(mappedBy = "departement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Travail> items;
@@ -59,13 +59,13 @@ public class Departement {
         return this.nom_service;
     }
 
-//    public Set<Hopital> getHopitals() {
-//        return hopitals;
-//    }
-//
-//    public void setHopitals(Set<Hopital> hopitals) {
-//        this.hopitals = hopitals;
-//    }
+    public Set<Hopital> getHopitals() {
+        return hopitals;
+    }
+
+    public void setHopitals(Set<Hopital> hopitals) {
+        this.hopitals = hopitals;
+    }
 
     public Boolean getDeleted() {
         return deleted;

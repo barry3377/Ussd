@@ -267,18 +267,18 @@ public class MenuServiceImpl implements MenuService {
             id_service = input.split("\\*")[3];
             id_jour = input.split("\\*")[4];
         }
-
-        try {
-            Hopital hopital = hopitalRepository.findByNumero(Long.parseLong(id_hopital));
-            List<Travail> travails = travailRepository.getByHopitalServiceAndJour(hopital.getId(), Long.parseLong(id_service));
-
-            for (int i=0; i < travails.size(); i++){
-                menu += travails.get(i).getHeures().getId() +". " + travails.get(i).getHeures().getInterval_heur()+"\n";
-            }
-            return menu;
-        } catch (Exception e) {
-            return "END Eureur de saisie "+id_jour;
-        }
+//
+//        try {
+//            Hopital hopital = hopitalRepository.findByNumero(Long.parseLong(id_hopital));
+//            List<Travail> travails = travailRepository.getByHopitalServiceAndJour(hopital.getId(), Long.parseLong(id_service));
+//
+//            for (int i=0; i < travails.size(); i++){
+//                menu += travails.get(i).getHeures().getId() +". " + travails.get(i).getHeures().getInterval_heur()+"\n";
+//            }
+//            return menu;
+//        } catch (Exception e) {
+//            return "END Eureur de saisie "+id_jour;
+//        }
 
 
         //        Integer jour = Integer.parseInt(input.split("\\*")[3]);
@@ -293,7 +293,7 @@ public class MenuServiceImpl implements MenuService {
 //                menu += value.getNumero() + ". " + value.getInterval_heur() + "\n";
 //            }
 //
-//        return menu;
+        return menu;
 
     }
 
@@ -368,7 +368,7 @@ public class MenuServiceImpl implements MenuService {
         rendezVous.setHopital(hopital);
         rendezVous.setHeures(heure);
         rendezVous.setDepartement(dep);
-        rendezVous.setJours(jour);
+      //  rendezVous.setJours(jour);
         rendezVous.setTicket(ticket);
         rendezVous.setUserTransaction(user);
 

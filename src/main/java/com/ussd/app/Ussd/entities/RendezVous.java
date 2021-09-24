@@ -1,6 +1,7 @@
 package com.ussd.app.Ussd.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Optional;
 
 @Entity
@@ -9,9 +10,7 @@ public class RendezVous {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String  Ticket;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "jour_id", nullable = false)
-    private Jour jours;
+    private Date date;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "heure_id", nullable = false)
     private Heure heures;
@@ -41,13 +40,7 @@ public class RendezVous {
         Ticket = ticket;
     }
 
-    public Jour getJours() {
-        return jours;
-    }
 
-    public void setJours(Jour jours) {
-        this.jours = jours;
-    }
 
     public Heure getHeures() {
         return heures;
