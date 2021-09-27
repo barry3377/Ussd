@@ -13,16 +13,16 @@ import java.util.*;
 public class Hopital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "hopital_id")
+    @Column(name = "hopitalId")
     private Long id;
     @NotNull
     private String nom_hopital;
     private Long numero;
     private boolean deleted=Boolean.FALSE;
     @ManyToMany( cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinTable(name = "hopital_service",
-            joinColumns = @JoinColumn(name = "hopital_id"),
-            inverseJoinColumns = @JoinColumn(name = "service_id"))
+    @JoinTable(name = "hopitalService",
+            joinColumns = @JoinColumn(name = "hopitalId"),
+            inverseJoinColumns = @JoinColumn(name = "serviceId"))
     private Set<Departement> departements = new HashSet<>();
    /* @ManyToMany
     private Collection<Departement> departements ;*/
