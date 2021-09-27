@@ -8,15 +8,17 @@ import com.ussd.app.Ussd.OrangeSMS.OrangeSMS;
 import com.ussd.app.Ussd.repository.*;
 import com.ussd.app.Ussd.utils.HTravail;
 import com.ussd.app.Ussd.utils.ITravail;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @Service
 public class MenuServiceImpl implements MenuService {
@@ -157,12 +159,12 @@ public class MenuServiceImpl implements MenuService {
 
         if(input.split("\\*").length == 2) {
             id_service = input.split("\\*")[1];
-        }else if(input.split("\\*").length == 4) {
-            id_service = input.split("\\*")[3];
+        }else if(input.split("\\*").length == 3) {
+            id_service = input.split("\\*")[2];
         }
 
         Departement departement = departementRepository.findById(Long.parseLong(id_service)).get();
-//        List<Hopital>hopitals =hopitalRepository.getByService(Integer.parseInt(id_service));
+//      List<Hopital>hopitals =hopitalRepository.getByService(Integer.parseInt(id_service));
         List<Hopital>hopitals =hopitalRepository.findByDepartements(departement);
 
 
@@ -321,7 +323,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String getCodeSecret(String input) {
-        Long ordre = Long.parseLong(input.split("\\*")[4]);
+      //  Long ordre = Long.parseLong(input.split("\\*")[4]);
     //    Heure heures = heureRepository.findByNumero(ordre);
        /* List<Heure> heure = heureRepository.findAll();
         int size = heure.size();
@@ -338,6 +340,7 @@ public class MenuServiceImpl implements MenuService {
         return menu ;
     }
 
+    @SneakyThrows
     public String getRendezVours(String input, String telephone) {
 
         String ticket = "435353";
@@ -346,17 +349,23 @@ public class MenuServiceImpl implements MenuService {
         Long id_service = 0L;
         int id_jour = 0;
         int id_heure = 0;
+        String date ="";
 
         if(input.split("\\*").length == 7) {
             id_hopital = Integer.parseInt(input.split("\\*")[2]);
             id_service = Long.parseLong(input.split("\\*")[1]);
-            id_jour = Integer.parseInt(input.split("\\*")[3]);
+            date= input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[4]);
+
+            date = input.split("\\*")[3];
+
         }else if(input.split("\\*").length == 5) {
             id_hopital = Integer.parseInt(input.split("\\*")[2]);
             id_service = Long.parseLong(input.split("\\*")[3]);
-            id_jour = Integer.parseInt(input.split("\\*")[4]);
+         //   id_jour = Integer.parseInt(input.split("\\*")[4]);
             id_heure = Integer.parseInt(input.split("\\*")[3]);
+
+            date = input.split("\\*")[4];
         }
 
         //User
@@ -374,13 +383,21 @@ public class MenuServiceImpl implements MenuService {
         Heure heure = heureRepository.findByNumero((long) id_heure);
 
         //Jour
-        Jour jour = jourRepository.getById((long) id_jour);
+        //Jour jour = jourRepository.getById((long) id_jour);
+
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
+//        Date date1 = new Date();
+//        String date2= dateFormat.format(date);
+
+       // DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/mm/yyyy", Locale.FRENCH);
+       // LocalDate date1 = Date.parse(date, format);
+        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
         RendezVous rendezVous = new RendezVous();
         rendezVous.setHopital(hopital);
         rendezVous.setHeures(heure);
         rendezVous.setDepartement(dep);
-      //  rendezVous.setJours(jour);
+        rendezVous.setDate(date1);
         rendezVous.setTicket(ticket);
         rendezVous.setUserTransaction(user);
 

@@ -1,6 +1,7 @@
 package com.ussd.app.Ussd.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 
@@ -75,5 +76,13 @@ public class RendezVous {
     }
 
     public RendezVous() {
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
