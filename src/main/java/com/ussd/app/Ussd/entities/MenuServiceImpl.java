@@ -90,15 +90,15 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getService(String  input) {
         String menu = "CON choisisez un service\n";
-        List<ITravail> travails = travailRepository.getGroup();
+        List<Departement> departements= departementRepository.findAll();
 
-        System.out.println("Size : " + travails.size());
+//        System.out.println("Size : " + travails.size());
 
 
-        if (travails.size() > 0) {
-            for( ITravail iTravail: travails){
-                Long depart_id = iTravail.getDepartementId();
-                Departement departement = departementRepository.findById(depart_id).get();
+        if (departements.size() > 0) {
+            for( Departement departement: departements){
+                Long depart_id = departement.getId();
+                departement = departementRepository.findById(depart_id).get();
                 menu += departement.getId() +". " + departement.getNom_service()+"\n";
             }
         }
@@ -161,12 +161,12 @@ public class MenuServiceImpl implements MenuService {
             id_service = input.split("\\*")[3];
         }
 
-        List<HTravail> travails = travailRepository.getByService(Integer.parseInt(id_service));
+        List<Hopital>hopitals =hopitalRepository.getByService(Integer.parseInt(id_service));
 
 
-            for( HTravail HTravail: travails){
-                Long hopital_id = HTravail.getHopitalId();
-                Hopital hopital= hopitalRepository.findById(hopital_id).get();
+            for( Hopital hopital: hopitals){
+                Long hopital_id = hopital.getId();
+                hopital= hopitalRepository.findById(hopital_id).get();
                 menu += hopital.getId() +". " + hopital.getNom_hopital()+"\n";
             }
 
@@ -248,24 +248,25 @@ public class MenuServiceImpl implements MenuService {
 //        return menu;
 
 
+
     }
 
     @Override
     public String getHeure(String input) {
-        String menu = "CON Les heu                                                                      res disponibles\n";
+        String menu = "CON Les heures disponibles\n";
 
         String id_hopital = "0";
         String id_service = "0";
-        String id_jour = "0";
+
 
         if(input.split("\\*").length == 4) {
             id_hopital = input.split("\\*")[2];
             id_service = input.split("\\*")[1];
-            id_jour = input.split("\\*")[3];
+
         }else if(input.split("\\*").length == 5) {
             id_hopital = input.split("\\*")[2];
             id_service = input.split("\\*")[3];
-            id_jour = input.split("\\*")[4];
+
         }
 //
 //        try {
@@ -293,6 +294,15 @@ public class MenuServiceImpl implements MenuService {
 //                menu += value.getNumero() + ". " + value.getInterval_heur() + "\n";
 //            }
 //
+        List<Heure> heures= heureRepository.findAll();
+        if (heures.size() > 0) {
+            for( Heure heure: heures){
+                Long depart_id = heure.getId();
+                heure= heureRepository.findById(depart_id).get();
+                menu += heure.getId() +". " + heure.getInterval_heur()+"\n";
+            }
+        }
+
         return menu;
 
     }
@@ -341,10 +351,10 @@ public class MenuServiceImpl implements MenuService {
             id_jour = Integer.parseInt(input.split("\\*")[3]);
             id_heure = Integer.parseInt(input.split("\\*")[4]);
         }else if(input.split("\\*").length == 5) {
-//            id_hopital = input.split("\\*")[2];
-//            id_service = input.split("\\*")[3];
-//            id_jour = input.split("\\*")[4];
-//            id_jour = input.split("\\*")[3];
+            id_hopital = Integer.parseInt(input.split("\\*")[2]);
+            id_service = Long.parseLong(input.split("\\*")[3]);
+            id_jour = Integer.parseInt(input.split("\\*")[4]);
+            id_heure = Integer.parseInt(input.split("\\*")[3]);
         }
 
         //User

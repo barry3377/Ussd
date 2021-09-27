@@ -3,6 +3,7 @@ package com.ussd.app.Ussd.repository;
 import com.ussd.app.Ussd.entities.Hopital;
 import com.ussd.app.Ussd.entities.Menu;
 import com.ussd.app.Ussd.entities.Travail;
+import com.ussd.app.Ussd.utils.HTravail;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -26,4 +27,10 @@ public interface HopitalRepository extends JpaRepository<Hopital,Long> {
     @Transactional
     @Query(value = "UPDATE hopital u SET u.count = ?1 WHERE hopital_id = ?2 ", nativeQuery = true)
     int updateHopital(int numero, int id);
+
+    @Query(value="SELECT * FROM hopital as h INNER JOIN hopital_service as hs ON(h.hopital_id = hs.hopital_id) " +
+            "INNER JOIN departement as d INNER JOIN hopital_service as hss ON(hss.service_id = d.departement_id) WHERE d.departement_id = :service " +
+            "GROUP BY h.hopital_id",nativeQuery = true)
+    List<Hopital> getByService(@Param(value = "service")  int service);
+
 }

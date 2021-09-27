@@ -12,8 +12,6 @@ public class Jour {
     private String nom_jour;
     @OneToMany(mappedBy = "jours", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Travail> items;
-    @OneToMany(mappedBy = "jours", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<RendezVous> item;
     public Jour() {
     }
 
