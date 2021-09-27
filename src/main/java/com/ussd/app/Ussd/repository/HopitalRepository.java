@@ -29,7 +29,7 @@ public interface HopitalRepository extends JpaRepository<Hopital,Long> {
     int updateHopital(int numero, int id);
 
     @Query(value="SELECT * FROM hopital as h INNER JOIN hopital_service as hs ON(h.hopital_id = hs.hopital_id) " +
-            "INNER JOIN departement as d INNER JOIN hopital_service as hss ON(hss.service_id = d.departement_id) WHERE d.departement_id = :service " +
+            "INNER JOIN departement as d INNER JOIN hopital_service as hss ON(hss.service_id = d.departementId) WHERE d.departementId= :service " +
             "GROUP BY h.hopital_id",nativeQuery = true)
     List<Hopital> getByService(@Param(value = "service")  int service);
 

@@ -14,7 +14,7 @@ import java.util.Set;
 public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="departement_id")
+    @Column(name="departementId")
     private Long id;
     private  String nom_service;
     private  Boolean deleted=Boolean.FALSE;
