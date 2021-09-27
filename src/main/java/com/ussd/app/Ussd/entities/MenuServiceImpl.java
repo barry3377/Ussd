@@ -161,7 +161,9 @@ public class MenuServiceImpl implements MenuService {
             id_service = input.split("\\*")[3];
         }
 
-        List<Hopital>hopitals =hopitalRepository.getByService(Integer.parseInt(id_service));
+        Departement departement = departementRepository.findById(Long.parseLong(id_service)).get();
+//        List<Hopital>hopitals =hopitalRepository.getByService(Integer.parseInt(id_service));
+        List<Hopital>hopitals =hopitalRepository.findByDepartements(departement);
 
 
             for( Hopital hopital: hopitals){
