@@ -4,17 +4,18 @@ package com.ussd.app.Ussd.OrangeSMS;
 import com.squareup.okhttp.*;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrangeSMS {
 
     public  OkHttpClient client;
-@Deprecated
+@Autowired
     JSONParser parser;
     public OrangeSMS() {
         client = new OkHttpClient();
-      parser =new JSONParser();
+
     }
 
     public String getToken() {
