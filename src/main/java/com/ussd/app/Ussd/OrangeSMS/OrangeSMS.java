@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 public class OrangeSMS {
 
     public  OkHttpClient client;
-
+@Deprecated
     JSONParser parser;
     public OrangeSMS() {
         client = new OkHttpClient();
-
+      parser =new JSONParser();
     }
 
     public String getToken() {
