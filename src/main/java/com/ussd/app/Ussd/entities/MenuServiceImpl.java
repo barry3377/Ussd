@@ -394,10 +394,11 @@ public class MenuServiceImpl implements MenuService {
         Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
         RendezVous rendezVous = new RendezVous();
-        rendezVous.setHopital(hopital);
-        rendezVous.setHeures(heure);
         rendezVous.setDepartement(dep);
+        rendezVous.setHopital(hopital);
         rendezVous.setDate(date1);
+        rendezVous.setHeures(heure);
+
         rendezVous.setTicket(ticket);
         rendezVous.setUserTransaction(user);
 
