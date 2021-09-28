@@ -412,7 +412,7 @@ public class MenuServiceImpl implements MenuService {
             boolean b = orangeSMS.sendMessage(telephone, message);
             System.out.println("Status: "+telephone);
 
-            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;
+            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone+ orangeSMS.getToken();
         }else {
             return "END Une erreur inconnu s'est produit";
         }
