@@ -12,10 +12,15 @@ public class OrangeSMS {
 
     public  OkHttpClient client;
 
-    JSONParser parser;
+     JSONParser parser;
+
     public OrangeSMS() {
         client = new OkHttpClient();
 
+    }
+
+    public OrangeSMS(JSONParser parser) {
+        this.parser = parser;
     }
 
     public String getToken() {
