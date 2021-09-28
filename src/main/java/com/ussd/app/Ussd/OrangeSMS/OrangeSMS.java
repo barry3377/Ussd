@@ -39,7 +39,7 @@ public class OrangeSMS {
 
             String jsonData = response.body().string();
 
-           // JSONParser parser = new JSONParser();
+            JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(jsonData);
             JSONObject myjson = new JSONObject(jsonObject);
 

@@ -407,10 +407,10 @@ public class MenuServiceImpl implements MenuService {
 //            telephone = "+224"+telephone;
 //           System.out.println(telephone);
          String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
-            boolean b = orangeSMS.sendMessage(telephone, message);
-//            System.out.println("Status: "+telephone);
+            //boolean b = orangeSMS.sendMessage(telephone, message);
+            System.out.println("Status: "+telephone);
 
-            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation";
+            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;
         }else {
             return "END Une erreur inconnu s'est produit";
         }
