@@ -343,8 +343,11 @@ public class MenuServiceImpl implements MenuService {
     @SneakyThrows
     public String getRendezVours(String input, String telephone) {
 
-        String ticket = "45632140";
 
+        long x = 1234567L;
+        long y = 23456789L;
+        Random r = new Random();
+        long  ticket  = x+((long)(r.nextDouble()*(y-x)));
         int id_hopital = 0;
         Long id_service = 0L;
         int id_heure = 0;
