@@ -2,6 +2,9 @@ package com.ussd.app.Ussd.repository;
 
 import com.ussd.app.Ussd.entities.Departement;
 import com.ussd.app.Ussd.entities.Hopital;
+import com.ussd.app.Ussd.entities.Menu;
+import com.ussd.app.Ussd.entities.Travail;
+import com.ussd.app.Ussd.utils.HTravail;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,13 +15,12 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface HopitalRepository extends JpaRepository<Hopital,Long> {
 
    // @Query(value = "SELECT * FROM hopital WHERE numero = ?1 LIMIT 1", nativeQuery = true)
-    Optional<Hopital> findById(Long id);
+    Hopital findByNumero(Long numero);
 
     List<Hopital> findAll(Sort sort);
 
