@@ -406,8 +406,7 @@ public class MenuServiceImpl implements MenuService {
         if (rendezVous != null) {
 //            telephone = "+224"+telephone;
 //           System.out.println(telephone);
-         String message =
-                    "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
+         String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
             boolean b = orangeSMS.sendMessage(telephone, message);
 //            System.out.println("Status: "+telephone);
 
