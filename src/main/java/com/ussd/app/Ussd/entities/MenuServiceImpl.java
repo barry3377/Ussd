@@ -343,7 +343,7 @@ public class MenuServiceImpl implements MenuService {
     @SneakyThrows
     public String getRendezVours(String input, String telephone) {
 
-        String ticket = "45632140987";
+        String ticket = "45632140";
 
         int id_hopital = 0;
         Long id_service = 0L;
