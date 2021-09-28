@@ -392,28 +392,28 @@ public class MenuServiceImpl implements MenuService {
        // DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/mm/yyyy", Locale.FRENCH);
        // LocalDate date1 = Date.parse(date, format);
         Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
-
-        RendezVous rendezVous = new RendezVous();
-        rendezVous.setHopital(hopital);
-        rendezVous.setHeures(heure);
-        rendezVous.setDepartement(dep);
-        rendezVous.setDate(date1);
-        rendezVous.setTicket(ticket);
-        rendezVous.setUserTransaction(user);
-
-        rendezVous =  rendezVousRepository.save(rendezVous);
-
-        if (rendezVous != null) {
-//            telephone = "+224"+telephone;
-//           System.out.println(telephone);
-         String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
-         //   boolean b = orangeSMS.sendMessage(telephone, message);
-            System.out.println("Status: "+telephone);
-
-            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;
-        }else {
-            return "END Une erreur inconnu s'est produit";
-        }
-    }
-
+//
+//        RendezVous rendezVous = new RendezVous();
+//        rendezVous.setHopital(hopital);
+//        rendezVous.setHeures(heure);
+//        rendezVous.setDepartement(dep);
+//        rendezVous.setDate(date1);
+//        rendezVous.setTicket(ticket);
+//        rendezVous.setUserTransaction(user);
+//
+//        rendezVous =  rendezVousRepository.save(rendezVous);
+//
+//        if (rendezVous != null) {
+////            telephone = "+224"+telephone;
+////           System.out.println(telephone);
+//         String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
+//         //   boolean b = orangeSMS.sendMessage(telephone, message);
+//            System.out.println("Status: "+telephone);
+//
+//            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;
+//        }else {
+//            return "END Une erreur inconnu s'est produit";
+//        }
+//    }
+        return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;}
 }
