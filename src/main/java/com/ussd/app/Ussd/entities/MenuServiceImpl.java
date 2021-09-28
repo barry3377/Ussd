@@ -352,6 +352,7 @@ public class MenuServiceImpl implements MenuService {
         Long id_service = 0L;
         int id_heure = 0;
         String date ="";
+        String num="";
 
         if(input.split("\\*").length == 7) {
             id_service = Long.parseLong(input.split("\\*")[1]);
@@ -368,7 +369,9 @@ public class MenuServiceImpl implements MenuService {
             date = input.split("\\*")[4];
          //   id_jour = Integer.parseInt(input.split("\\*")[4]);
             id_heure = Integer.parseInt(input.split("\\*")[3]);
-
+            num=(input.split("\\*")[1]);
+            String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
+            boolean b = orangeSMS.sendMessage("+224"+num, message);
 
         }
 
