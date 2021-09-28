@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class OrangeSMS {
 
     public  OkHttpClient client;
-@Autowired
+
     JSONParser parser;
     public OrangeSMS() {
         client = new OkHttpClient();
