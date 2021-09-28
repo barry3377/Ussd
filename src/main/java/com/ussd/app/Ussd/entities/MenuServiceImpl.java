@@ -351,8 +351,9 @@ public class MenuServiceImpl implements MenuService {
         String date ="";
 
         if(input.split("\\*").length == 7) {
-            id_hopital = Integer.parseInt(input.split("\\*")[2]);
             id_service = Long.parseLong(input.split("\\*")[1]);
+            id_hopital = Integer.parseInt(input.split("\\*")[2]);
+
             date= input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[4]);
 
@@ -377,7 +378,7 @@ public class MenuServiceImpl implements MenuService {
         Departement dep = departementRepository.getById(id_service);
 
         //Hopital
-        Hopital hopital = hopitalRepository.findByNumero((long) id_hopital);
+        Hopital hopital = hopitalRepository.findById((long) id_hopital).get();
 
         //Heure
         Heure heure = heureRepository.findByNumero((long) id_heure);
