@@ -415,5 +415,5 @@ public class MenuServiceImpl implements MenuService {
 //            return "END Une erreur inconnu s'est produit";
 //        }
 //    }
-        return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;}
+        return "END Votre rendez-vous  a bien vvvvv ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;}
 }
