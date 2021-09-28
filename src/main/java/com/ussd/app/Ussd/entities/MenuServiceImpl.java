@@ -390,7 +390,7 @@ public class MenuServiceImpl implements MenuService {
 //        Date date1 = new Date();
 //        String date2= dateFormat.format(date);
 
-       // DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/mm/yyyy", Locale.FRENCH);
+       // DateTimeFormatter format = DateTimeFormatter.ofP  attern("dd/mm/yyyy", Locale.FRENCH);
        // LocalDate date1 = Date.parse(date, format);
         Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
@@ -412,7 +412,7 @@ public class MenuServiceImpl implements MenuService {
             boolean b = orangeSMS.sendMessage(telephone, message);
             System.out.println("Status: "+telephone);
 
-            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone+ orangeSMS.getToken();
+            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;
         }else {
             return "END Une erreur inconnu s'est produit";
         }
