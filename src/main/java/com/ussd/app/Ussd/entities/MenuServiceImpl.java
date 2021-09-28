@@ -347,7 +347,6 @@ public class MenuServiceImpl implements MenuService {
 
         int id_hopital = 0;
         Long id_service = 0L;
-        int id_jour = 0;
         int id_heure = 0;
         String date ="";
 
@@ -359,13 +358,14 @@ public class MenuServiceImpl implements MenuService {
 
             date = input.split("\\*")[3];
 
-        }else if(input.split("\\*").length == 5) {
+        }else if(input.split("\\*").length == 8) {
             id_hopital = Integer.parseInt(input.split("\\*")[2]);
             id_service = Long.parseLong(input.split("\\*")[3]);
+            date = input.split("\\*")[4];
          //   id_jour = Integer.parseInt(input.split("\\*")[4]);
             id_heure = Integer.parseInt(input.split("\\*")[3]);
 
-            date = input.split("\\*")[4];
+
         }
 
         //User
