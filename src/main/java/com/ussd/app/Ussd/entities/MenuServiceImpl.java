@@ -335,7 +335,7 @@ public class MenuServiceImpl implements MenuService {
         if (ordre > size || ordre == 0){
             return "Erreur de saisie";
         }*/
-        return "CON Entrer votre code secret slpv";
+        return "CON Entrer votre code secret slp";
     }
     @Override
     public String getConfirmation() {
@@ -382,13 +382,15 @@ public class MenuServiceImpl implements MenuService {
         else if(input.split("\\*").length == 5) {
             System.out.println("vous etes super");
             date = input.split("\\*")[3];
+            id_heure = Integer.parseInt(input.split("\\*")[3]);
             long numero = Long.parseLong(input.split("\\*")[2]);
             Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
             RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
             System.out.println(rendezVous.getTicket());
-
+            Heure heure = heureRepository.findByNumero((long) id_heure);
 
             rendezVous.setDate(date1);
+            rendezVous.setHeures(heure);
             rendezVousRepository.save(rendezVous);
             String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
             boolean b = orangeSMS.sendMessage(telephone, message);
