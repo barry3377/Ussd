@@ -8,7 +8,7 @@ public interface MenuService {
     String getService(String input);
     String getJours(String input);
     String getHeure(String input);
-    String getMenu(String level, String input, String telephone) throws ParseException;
+    String getMenu(String level, String input, String telephone) ;
     String getCodeSecret(String input);
     String getTelephone();
     String getSecondMenu(String input);
@@ -16,7 +16,7 @@ public interface MenuService {
    String getRendezVours(String input, String telephone);
    String getVerification(String input);
     String checkTicket(String input);
-    String prolongementSuccess(String input,String telephone) throws ParseException;
+//    String prolongementSuccess(String input,String telephone) throws ParseException;
 }
 
 

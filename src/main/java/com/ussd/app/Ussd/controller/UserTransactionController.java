@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-
 @RestController
 @RequestMapping("api/sante/ussd")
 public class UserTransactionController {
@@ -30,7 +28,7 @@ public class UserTransactionController {
     @PostMapping
     public ResponseEntity<String> processUssd(@RequestParam(name = "sessionId") String sessionId,
                                               @RequestParam(name = "phoneNumber") String msisdn,
-                                              @RequestParam(name = "text") String input) throws ParseException {
+                                              @RequestParam(name = "text") String input) {
         if (input.isEmpty()) { // Nouvelle demande
             return getMenu("1*1", input,"");
         }else if(( input.equals("2")||
@@ -46,12 +44,11 @@ public class UserTransactionController {
             return getMenu("hopitaux", input,"");
         }else if(input.matches("^1\\*[0-9]+\\*[0-9]+")
                 || input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+")
-
-                        || input.matches("^3\\*2\\*6[0-9]{8}") ){
+                || input.matches("^3\\*2\\*6[0-9]{8}") ){
             return getMenu("jours", input,"");
         }else if((input.matches("^1\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")
                 || input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")||
-                input.matches("^3\\*1\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")||
+                input.matches("^3\\*1\\*[0-9]++\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")||
                         (input.matches("^3\\*2\\*6[0-9]{8}\\*[0-9]+")))){
             return getMenu("heures", input,"");
         }else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]+")
@@ -65,28 +62,26 @@ public class UserTransactionController {
 
         }
         else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]+\\*[0-9]{4,5}+\\*1")
-                ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+" +
-                "\\*[0-9]+\\*[0-9]{4,5}+\\*1"))) {
+                ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]+" +
+                "\\*[0-9]{4,5}+\\*1")|| input.matches("^3\\*1\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]"))) {
             return getMenu("rendezVous", input,msisdn);
 
         }
 
           else  if(( input.matches("^3\\*1"))){
-              return  getMenu("verification ",input,"");
+              return  getMenu("verification",input,"");
         }
         else  if(( input.matches("^3\\*1\\*[0-9]+"))){
-            return  getMenu("tichet",input,"");
+            return  getMenu("ticket",input,"");
         }
-        else  if( input.matches("^3\\*1\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]")){
-            return  getMenu("validation",input,"telephone");
-        }
+
     	return ResponseEntity.ok()
                 .header("FreeFlow", "FB")
 				.body("Mauvaise entree ou \nmenu en cours de developpement !!!");
     }
 
 
-    private ResponseEntity<String> getMenu(String level, String input,String telephone) throws ParseException {
+    private ResponseEntity<String> getMenu(String level, String input,String telephone) {
         // Recuperation du men
 
 
