@@ -477,14 +477,14 @@ public class MenuServiceImpl implements MenuService {
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
              RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
-//
-//              Heure heure = heureRepository.findByNumero((long) id_heure);
-//
-//            rendezVous.setDate(date1);
-//            rendezVous.setHeures(heure);
-//            rendezVousRepository.save(rendezVous);
-//            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
-//            boolean b = orangeSMS.sendMessage(telephone, message);
+
+              Heure heure = heureRepository.findByNumero((long) id_heure);
+
+            rendezVous.setDate(date1);
+            rendezVous.setHeures(heure);
+            rendezVousRepository.save(rendezVous);
+            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
+            boolean b = orangeSMS.sendMessage(telephone, message);
 
 
         }
