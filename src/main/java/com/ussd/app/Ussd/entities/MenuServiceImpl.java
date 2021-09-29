@@ -62,10 +62,15 @@ public class MenuServiceImpl implements MenuService {
                 return  this.getTelephone();
             case "prolongerRDV":
                 return  this.getSecondMenu(input);
+            case "verification ":
+                return  this.getVerification(input);
+            case "tichet":
+                return  this.checkTicket(input);
             case "confirmation":
                 return  this.getConfirmation();
                case "rendezVous":
              return  this.getRendezVours(input, telephone);
+
 
         }
 
@@ -330,7 +335,7 @@ public class MenuServiceImpl implements MenuService {
         if (ordre > size || ordre == 0){
             return "Erreur de saisie";
         }*/
-        return "CON Entrer votre code secret";
+        return "CON Entrer votre code secret slpv";
     }
     @Override
     public String getConfirmation() {
@@ -344,8 +349,8 @@ public class MenuServiceImpl implements MenuService {
     public String getRendezVours(String input, String telephone) {
 
 
-        long x = 1234567L;
-        long y = 23456789L;
+        long x = 1234L;
+        long y = 2345L;
         Random r = new Random();
         long  ticket  = x+((long)(r.nextDouble()*(y-x)));
         int id_hopital = 0;
@@ -372,6 +377,22 @@ public class MenuServiceImpl implements MenuService {
             num=(input.split("\\*")[1]);
             String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
             boolean b = orangeSMS.sendMessage("+224"+num, message);
+
+        }
+        else if(input.split("\\*").length == 5) {
+            System.out.println("vous etes super");
+            date = input.split("\\*")[3];
+            long numero = Long.parseLong(input.split("\\*")[2]);
+            Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
+            RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
+            System.out.println(rendezVous.getTicket());
+
+
+            rendezVous.setDate(date1);
+            rendezVousRepository.save(rendezVous);
+            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
+            boolean b = orangeSMS.sendMessage(telephone, message);
+            return "END Votre rendez-vous  a bien ete modifier meri, vous recevrer un sms de confirmation"+"Status: "+telephone;
 
         }
 
@@ -423,4 +444,36 @@ public class MenuServiceImpl implements MenuService {
             return "END Une erreur inconnu s'est produit";
         }
     }
+
+    @Override
+    public String getVerification(String input) {
+
+       // List< RendezVous> rendezVous=rendezVousRepository.findAll();
+
+      //  long numero= Long.parseLong(input.split("\\*")[1]);
+
+        return "CON  entrer le numero de votre tichet precedent";
+    }
+
+    @Override
+    public String checkTicket(String input) {
+
+        List< RendezVous> rendezVous=rendezVousRepository.findAll();
+
+        long numero = Long.parseLong(input.split("\\*")[2]);
+
+        boolean etat = false;
+        for(RendezVous rendezVous1:rendezVous){
+            if(rendezVous1.getTicket() == numero) {
+                etat =true;
+                break;
+            }
+        }
+
+        if(etat == true) {
+            return "CON Entrer la nouvlle date";
+        }
+        return "END Numero de ticket invalide";
+    }
+
 }

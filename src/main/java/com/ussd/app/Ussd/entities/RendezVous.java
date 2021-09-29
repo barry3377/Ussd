@@ -10,7 +10,7 @@ public class RendezVous {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private Long Ticket;
+    private Long ticket;
     private Date date;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "heure_id", nullable = false)
@@ -34,11 +34,11 @@ public class RendezVous {
     }
 
     public Long getTicket() {
-        return Ticket;
+        return ticket;
     }
 
     public void setTicket(Long ticket) {
-        Ticket = ticket;
+        this.ticket = ticket;
     }
 
 
