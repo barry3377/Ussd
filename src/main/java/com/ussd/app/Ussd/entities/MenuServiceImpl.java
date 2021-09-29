@@ -472,7 +472,7 @@ public class MenuServiceImpl implements MenuService {
         if (input.split("\\*").length == 6) {
             System.out.println("vous etes super");
             date = input.split("\\*")[3];
-            id_heure = Integer.parseInt(input.split("\\*")[3]);
+            id_heure = Integer.parseInt(input.split("\\*")[4]);
             long numero = Long.parseLong(input.split("\\*")[2]);
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
