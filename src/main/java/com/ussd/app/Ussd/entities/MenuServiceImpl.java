@@ -469,7 +469,7 @@ public class MenuServiceImpl implements MenuService {
         int id_heure = 0;
         String date = "";
 
-        if (input.split("\\*").length == 5) {
+        if (input.split("\\*").length == 6) {
             System.out.println("vous etes super");
             date = input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[3]);
