@@ -64,8 +64,7 @@ public class UserTransactionController {
         }
         else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]+\\*[0-9]{4,5}+\\*1")
                 ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+" +
-                "\\*[0-9]+\\*[0-9]{4,5}+\\*1")
-                ||( input.matches("^3\\*1\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]")))) {
+                "\\*[0-9]+\\*[0-9]{4,5}+\\*1"))) {
             return getMenu("rendezVous", input,msisdn);
 
         }
@@ -75,6 +74,9 @@ public class UserTransactionController {
         }
         else  if(( input.matches("^3\\*1\\*[0-9]+"))){
             return  getMenu("tichet",input,"");
+        }
+        else  if( input.matches("^3\\*1\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]")){
+            return  getMenu("validation",input,"telephone");
         }
     	return ResponseEntity.ok()
                 .header("FreeFlow", "FB")

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -44,7 +45,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Autowired
     TravailRepository travailRepository;
-    public String getMenu(String level, String input, String telephone) {
+    public String getMenu(String level, String input, String telephone) throws ParseException {
         switch (level) {
             case "1*1":
                 return this.getPrincipal();
@@ -68,6 +69,8 @@ public class MenuServiceImpl implements MenuService {
                 return  this.checkTicket(input);
             case "confirmation":
                 return  this.getConfirmation();
+            case "validation":
+                return  this.prolongementSuccess(input,telephone);
                case "rendezVous":
              return  this.getRendezVours(input, telephone);
 
@@ -379,25 +382,7 @@ public class MenuServiceImpl implements MenuService {
             boolean b = orangeSMS.sendMessage("+224"+num, message);
 
         }
-        else if(input.split("\\*").length == 5) {
-            System.out.println("vous etes super");
-            date = input.split("\\*")[3];
-            id_heure = Integer.parseInt(input.split("\\*")[3]);
-            long numero = Long.parseLong(input.split("\\*")[2]);
-            Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
-            return date ;
-           // RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
 
-          //  Heure heure = heureRepository.findByNumero((long) id_heure);
-
-//            rendezVous.setDate(date1);
-//            rendezVous.setHeures(heure);
-//            rendezVousRepository.save(rendezVous);
-//            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
-//            boolean b = orangeSMS.sendMessage(telephone, message);
-//            return "END Votre rendez-vous  a bien ete modifier meri, vous recevrer un sms de confirmation"+"Status: "+telephone;
-//
-        }
 
         //User
         UserTransaction usert = new UserTransaction();
@@ -479,4 +464,31 @@ public class MenuServiceImpl implements MenuService {
         return "END Numero de ticket invalide";
     }
 
+    @Override
+    public String prolongementSuccess(String input,String telephone) throws ParseException {
+        int id_heure = 0;
+        String date = "";
+
+        if (input.split("\\*").length == 5) {
+            System.out.println("vous etes super");
+            date = input.split("\\*")[3];
+            id_heure = Integer.parseInt(input.split("\\*")[3]);
+            long numero = Long.parseLong(input.split("\\*")[2]);
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+
+            // RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
+
+            //  Heure heure = heureRepository.findByNumero((long) id_heure);
+
+//            rendezVous.setDate(date1);
+//            rendezVous.setHeures(heure);
+//            rendezVousRepository.save(rendezVous);
+//            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
+//            boolean b = orangeSMS.sendMessage(telephone, message);
+//            return "END Votre rendez-vous  a bien ete modifier meri, vous recevrer un sms de confirmation"+"Status: "+telephone;
+//
+
+        }
+        return date +id_heure;
+    }
 }
