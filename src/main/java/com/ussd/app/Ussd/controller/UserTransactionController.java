@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+
 @RestController
 @RequestMapping("api/sante/ussd")
 public class UserTransactionController {
@@ -28,7 +30,7 @@ public class UserTransactionController {
     @PostMapping
     public ResponseEntity<String> processUssd(@RequestParam(name = "sessionId") String sessionId,
                                               @RequestParam(name = "phoneNumber") String msisdn,
-                                              @RequestParam(name = "text") String input) {
+                                              @RequestParam(name = "text") String input) throws ParseException {
         if (input.isEmpty()) { // Nouvelle demande
             return getMenu("1*1", input,"");
         }else if(( input.equals("2")||
@@ -84,7 +86,7 @@ public class UserTransactionController {
     }
 
 
-    private ResponseEntity<String> getMenu(String level, String input,String telephone) {
+    private ResponseEntity<String> getMenu(String level, String input,String telephone) throws ParseException {
         // Recuperation du men
 
 
