@@ -469,7 +469,7 @@ public class MenuServiceImpl implements MenuService {
         int id_heure = 0;
         String date = "";
 
-        if (input.split("\\*").length == 6)
+
             System.out.println("vous etes super");
             date = input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[3]);
@@ -485,10 +485,10 @@ public class MenuServiceImpl implements MenuService {
             rendezVousRepository.save(rendezVous);
             String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
             boolean b = orangeSMS.sendMessage(telephone, message);
+            return "END Votre rendez-vous  a bien ete modifier meri, vous recevrer un sms de confirmation"+"Status: "+telephone;
 
 
 
-        return "END Votre rendez-vous  a bien ete modifier meri, vous recevrer un sms de confirmation"+"Status: "+telephone;
 
     }
 }
