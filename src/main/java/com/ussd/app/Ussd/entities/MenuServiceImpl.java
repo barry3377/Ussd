@@ -388,14 +388,14 @@ public class MenuServiceImpl implements MenuService {
             RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
             System.out.println(rendezVous.getTicket());
             Heure heure = heureRepository.findByNumero((long) id_heure);
-
-            rendezVous.setDate(date1);
-            rendezVous.setHeures(heure);
-            rendezVousRepository.save(rendezVous);
-            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
-            boolean b = orangeSMS.sendMessage(telephone, message);
-            return "END Votre rendez-vous  a bien ete modifier meri, vous recevrer un sms de confirmation"+"Status: "+telephone;
-
+return date + heure;
+//            rendezVous.setDate(date1);
+//            rendezVous.setHeures(heure);
+//            rendezVousRepository.save(rendezVous);
+//            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
+//            boolean b = orangeSMS.sendMessage(telephone, message);
+//            return "END Votre rendez-vous  a bien ete modifier meri, vous recevrer un sms de confirmation"+"Status: "+telephone;
+//
         }
 
         //User
