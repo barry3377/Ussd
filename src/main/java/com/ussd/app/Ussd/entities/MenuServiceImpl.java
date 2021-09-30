@@ -382,7 +382,7 @@ public class MenuServiceImpl implements MenuService {
             boolean b = orangeSMS.sendMessage("+224"+num, message);
 
         }
-      else  if (input.split("\\*").length == 6) {
+      else  if (input.split("\\*").length == 5) {
             System.out.println("vous etes super");
             date = input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[4]);
@@ -392,13 +392,14 @@ public class MenuServiceImpl implements MenuService {
             RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
 
             Heure heure = heureRepository.findByNumero((long) id_heure);
+            return "END "+"Status: "+telephone +date1 +heure;
 
-            rendezVous.setDate(date1);
-            rendezVous.setHeures(heure);
-            rendezVousRepository.save(rendezVous);
-            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
-            boolean b = orangeSMS.sendMessage(telephone, message);
-            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;
+//            rendezVous.setDate(date1);
+//            rendezVous.setHeures(heure);
+//            rendezVousRepository.save(rendezVous);
+//            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
+//            boolean b = orangeSMS.sendMessage(telephone, message);
+            //return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;
 
 
         }
