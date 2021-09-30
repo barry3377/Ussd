@@ -498,7 +498,7 @@ else{
 
         if (input.split("\\*").length == 3) {
             numero = Long.parseLong(input.split("\\*")[2]);
-        }else{
+        }else if (input.split("\\*").length == 4){
             numero = Long.parseLong(input.split("\\*")[3]);
         }
 
