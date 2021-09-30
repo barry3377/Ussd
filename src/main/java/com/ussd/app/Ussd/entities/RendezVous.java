@@ -82,6 +82,13 @@ public class RendezVous {
         return date;
     }
 
+    @Override
+    public String toString() {
+        return "RendezVous{" +
+                "ticket=" + ticket +
+                '}';
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }
