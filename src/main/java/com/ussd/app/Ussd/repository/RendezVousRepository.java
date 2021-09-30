@@ -18,5 +18,5 @@ public interface RendezVousRepository extends JpaRepository<RendezVous,Long> {
 //         "values (?1, ?2, ?3, ?4, ?5)")
 //    @Transactional
 //    int RendezVous(int hopital, int service, int jour, int heure, Long user, String numero);
-        RendezVous findByTicket(long rendezVous);
+        RendezVous findByTicket(Long numero);
 }
