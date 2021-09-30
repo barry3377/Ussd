@@ -456,10 +456,11 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public String getVerification(String input) {
          if((input.split("\\*").length == 4)){
+
              return "CON  entrer le numero de son tichet precedent";
          }
-
-        return "CON  entrer le numero de votre tichet precedent";
+else{
+        return "CON  entrer le numero de votre tichet precedent";}
     }
 
     @Override
