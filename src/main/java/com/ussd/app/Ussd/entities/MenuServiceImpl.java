@@ -391,7 +391,7 @@ public class MenuServiceImpl implements MenuService {
 
         RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
     Heure heure = heureRepository.findByNumero((long) id_heure);
-            return "END "+"Status: "+telephone +date1 +heure;
+            return "END "+"Status: "+telephone +date1 +heure+"bb";
 
 //            rendezVous.setDate(date1);
 //            rendezVous.setHeures(heure);
