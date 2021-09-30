@@ -408,7 +408,7 @@ public class MenuServiceImpl implements MenuService {
             return "END Votre rendez-vous pour une autre personne à ete enregistrer, vous recevrer un sms de confirmation"+"Status: "+telephone;
 
         }
-      else  if (input.split("\\*").length == 5) {
+       else  if (input.split("\\*").length == 5) {
             System.out.println("vous etes super");
             date = input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[4]);
@@ -494,7 +494,14 @@ else{
 
         List< RendezVous> rendezVous=rendezVousRepository.findAll();
 
-        long numero = Long.parseLong(input.split("\\*")[2]);
+        long numero = 0;
+
+        if (input.split("\\*").length == 3) {
+            numero = Long.parseLong(input.split("\\*")[2]);
+        }else{
+            numero = Long.parseLong(input.split("\\*")[3]);
+        }
+
 
         boolean etat = false;
         for(RendezVous rendezVous1:rendezVous){
