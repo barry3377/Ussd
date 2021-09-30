@@ -71,7 +71,8 @@ public class UserTransactionController {
                 (input.matches("^3\\*2\\*6[0-9]{8}")))){
               return  getMenu("verification",input,"");
         }
-        else  if(( input.matches("^3\\*1\\*[0-9]+"))){
+        else  if(( input.matches("^3\\*1\\*[0-9]+" )||
+                (input.matches("^3\\*2\\*6[0-9]{8}\\*[0-9]+")))){
             return  getMenu("ticket",input,"");
         }
 
