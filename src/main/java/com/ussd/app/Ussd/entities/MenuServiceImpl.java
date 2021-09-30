@@ -386,12 +386,12 @@ public class MenuServiceImpl implements MenuService {
             System.out.println("vous etes super");
             date = input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[4]);
-            Long numero = Long.parseLong(input.split("\\*")[2]);
+            Long numero = Long.parseUnsignedLong(input.split("\\*")[2]);
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
             System.out.println("Ticket : " + numero);
-//        RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
+        RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
             Heure heure = heureRepository.findByNumero((long) id_heure);
-            return "END "+"Status: "+telephone +date1 +"bb"+heure+numero;
+            return "END "+"Status: "+telephone +date1 +"bb"+heure+rendezVous.getTicket();
 
 //            rendezVous.setDate(date1);
 //            rendezVous.setHeures(heure);
