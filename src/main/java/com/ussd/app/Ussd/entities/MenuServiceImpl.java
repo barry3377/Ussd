@@ -512,7 +512,7 @@ else{
         }
 
         if(etat == true) {
-            return "CON Entrer la nouvlle date";
+            return "CON Entrer la nouvelle date";
         }
         return "END Numero de ticket invalide";
     }
