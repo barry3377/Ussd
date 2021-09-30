@@ -378,6 +378,31 @@ public class MenuServiceImpl implements MenuService {
          //   id_jour = Integer.parseInt(input.split("\\*")[4]);
             id_heure = Integer.parseInt(input.split("\\*")[3]);
             num=(input.split("\\*")[1]);
+            UserTransaction usert = new UserTransaction();
+            usert.setMsisdn("+224"+num);
+            UserTransaction user = userTransactionRepository.save(usert);
+
+            //Departement
+            Departement dep = departementRepository.getById(id_service);
+
+            //Hopital
+            Hopital hopital = hopitalRepository.findById((long) id_hopital).get();
+
+            //Heure
+            Heure heure = heureRepository.findByNumero((long) id_heure);
+
+            Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
+
+            RendezVous rendezVous = new RendezVous();
+            rendezVous.setDepartement(dep);
+            rendezVous.setHopital(hopital);
+            rendezVous.setDate(date1);
+            rendezVous.setHeures(heure);
+
+            rendezVous.setTicket(ticket);
+            rendezVous.setUserTransaction(user);
+
+            rendezVous =  rendezVousRepository.save(rendezVous);
             String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
             boolean b = orangeSMS.sendMessage("+224"+num, message);
             return "END Votre rendez-vous pour une autre personne à ete enregistrer, vous recevrer un sms de confirmation"+"Status: "+telephone;
