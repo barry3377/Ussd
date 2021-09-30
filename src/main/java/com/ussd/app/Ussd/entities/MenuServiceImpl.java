@@ -494,13 +494,13 @@ else{
 
         List< RendezVous> rendezVous=rendezVousRepository.findAll();
 
-     //  long numero = 0;
+        Long numero = Long.parseLong(input.split("\\*")[0]);
 
-//        if (input.split("\\*").length == 3) {
-         Long   numero = Long.parseLong(input.split("\\*")[2]);
-//        }else{
-//            numero = Long.parseLong(input.split("\\*")[3]);
-//        }
+        if (input.split("\\*").length == 3) {
+            numero = Long.parseLong(input.split("\\*")[2]);
+        }else{
+            numero = Long.parseLong(input.split("\\*")[3]);
+        }
 
 
         boolean etat = false;
