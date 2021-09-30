@@ -390,8 +390,9 @@ public class MenuServiceImpl implements MenuService {
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
         RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
-    Heure heure = heureRepository.findByNumero((long) id_heure);
-            return "END "+"Status: "+telephone +date1 +heure+"bb";
+            return "END "+"Status: "+telephone +date1 +"bb"+rendezVous;
+        //Heure heure = heureRepository.findByNumero((long) id_heure);
+
 
 //            rendezVous.setDate(date1);
 //            rendezVous.setHeures(heure);
