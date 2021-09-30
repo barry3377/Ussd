@@ -444,15 +444,7 @@ public class MenuServiceImpl implements MenuService {
         //Heure
         Heure heure = heureRepository.findByNumero((long) id_heure);
 
-        //Jour
-        //Jour jour = jourRepository.getById((long) id_jour);
 
-//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
-//        Date date1 = new Date();
-//        String date2= dateFormat.format(date);
-
-       // DateTimeFormatter format = DateTimeFormatter.ofP  attern("dd/mm/yyyy", Locale.FRENCH);
-       // LocalDate date1 = Date.parse(date, format);
         Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
         RendezVous rendezVous = new RendezVous();
@@ -492,7 +484,7 @@ else{
     @Override
     public String checkTicket(String input) {
 
-        List< RendezVous> rendezVous=rendezVousRepository.findAll();
+
 
         Long numero = Long.parseLong(input.split("\\*")[2]);
 //
@@ -501,7 +493,7 @@ else{
 //        }else if (input.split("\\*").length == 4){
 //            numero = Long.parseLong(input.split("\\*")[3]);
 //        }
-
+        List< RendezVous> rendezVous=rendezVousRepository.findAll();
 
         boolean etat = false;
         for(RendezVous rendezVous1:rendezVous){
