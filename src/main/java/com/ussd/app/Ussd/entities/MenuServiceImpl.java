@@ -382,7 +382,7 @@ public class MenuServiceImpl implements MenuService {
             boolean b = orangeSMS.sendMessage("+224"+num, message);
 
         }
-      else  if (input.split("\\*").length == 6) {
+      else  if (input.split("\\*").length == 5) {
             System.out.println("vous etes super");
             date = input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[4]);
