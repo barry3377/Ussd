@@ -48,8 +48,7 @@ public class UserTransactionController {
             return getMenu("jours", input,"");
         }else if((input.matches("^1\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")
                 || input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")||
-                input.matches("^3\\*1\\*[0-9]++\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")||
-                        (input.matches("^3\\*2\\*6[0-9]{8}\\*[0-9]+")))){
+                input.matches("^3\\*1\\*[0-9]++\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}"))){
             return getMenu("heures", input,"");
         }else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]+")
                 ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]+")   )){
@@ -68,7 +67,8 @@ public class UserTransactionController {
 
         }
 
-          else  if(( input.matches("^3\\*1"))){
+          else  if(( input.matches("^3\\*1")||
+                (input.matches("^3\\*2\\*6[0-9]{8}")))){
               return  getMenu("verification",input,"");
         }
         else  if(( input.matches("^3\\*1\\*[0-9]+"))){

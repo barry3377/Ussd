@@ -398,7 +398,7 @@ public class MenuServiceImpl implements MenuService {
             rendezVousRepository.save(rendezVous);
             String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
             boolean b = orangeSMS.sendMessage(telephone, message);
-            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;
+            return "END Votre rendez-vous  a bien été prolonger, vous recevrer un sms de confirmation"+"Status: "+telephone;
 
 
         }
