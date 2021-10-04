@@ -406,24 +406,25 @@ public class MenuServiceImpl implements MenuService {
             return "END Votre rendez-vous pour une autre personne à ete enregistrer," +
                     " vous recevrer un sms de confirmation" + "Status: " + telephone;
 
-        } else if (input.split("\\*").length == 5) {
+        } else if (input.split("\\*").length == 4) {
             System.out.println("vous etes super");
-            date = input.split("\\*")[3];
-            id_heure = Integer.parseInt(input.split("\\*")[4]);
-            Long numero = Long.parseUnsignedLong(input.split("\\*")[2]);
+            date = input.split("\\*")[2];
+            id_heure = Integer.parseInt(input.split("\\*")[3]);
+            Long numero = Long.parseUnsignedLong(input.split("\\*")[1]);
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
             System.out.println("Ticket : " + numero);
             RendezVous rendezVous = rendezVousRepository.findByTicket(numero);
             Heure heure = heureRepository.findByNumero((long) id_heure);
             //  return "END "+"Status: "+telephone +date1 +"bb"+heure+rendezVous.getTicket();
 
+            String phone = rendezVous.getUserTransaction().getMsisdn();
+
             rendezVous.setDate(date1);
             rendezVous.setHeures(heure);
             rendezVousRepository.save(rendezVous);
             String message = "Votre RendezVous a été prolonger avec success  pour la date suivante" + rendezVous.getDate();
-            boolean b = orangeSMS.sendMessage(telephone, message);
+            boolean b = orangeSMS.sendMessage(phone, message);
             return "END Votre rendez-vous  a bien été prolonger, vous recevrer un sms de confirmation" + "Status: " + telephone;
-
 
         }
 
