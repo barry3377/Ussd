@@ -504,7 +504,7 @@ public class MenuServiceImpl implements MenuService {
         if(etat == true) {
             return "CON Entrer la nouvelle date";
         }
-        return "END Numero de ticket invalide";
+        return "END Numero de ticket invalide"+numero;
     }
 
 
