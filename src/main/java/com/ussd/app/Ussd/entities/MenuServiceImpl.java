@@ -398,10 +398,8 @@ public class MenuServiceImpl implements MenuService {
             rendezVous.setHopital(hopital);
             rendezVous.setDate(date1);
             rendezVous.setHeures(heure);
-
             rendezVous.setTicket(ticket);
             rendezVous.setUserTransaction(user);
-
             rendezVous =  rendezVousRepository.save(rendezVous);
             String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
             boolean b = orangeSMS.sendMessage("+224"+num, message);
@@ -459,8 +457,7 @@ public class MenuServiceImpl implements MenuService {
         rendezVous =  rendezVousRepository.save(rendezVous);
 
         if (rendezVous != null) {
-//            telephone = "+224"+telephone;
-//           System.out.println(telephone);
+
          String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
             boolean b = orangeSMS.sendMessage(telephone, message);
             System.out.println("Status: "+telephone);
@@ -485,14 +482,14 @@ else{
     public String checkTicket(String input) {
 
 
+        Long numero=0L;
+        //    Long numero = Long.parseLong(input.split("\\*")[2]);
 
-        Long numero = Long.parseLong(input.split("\\*")[2]);
-//
-//        if (input.split("\\*").length == 3) {
-//            numero = Long.parseLong(input.split("\\*")[2]);
-//        }else if (input.split("\\*").length == 4){
-//            numero = Long.parseLong(input.split("\\*")[3]);
-//        }
+        if (input.split("\\*").length == 3) {
+            numero = Long.parseLong(input.split("\\*")[2]);
+        }else if (input.split("\\*").length == 4){
+            numero = Long.parseLong(input.split("\\*")[3]);
+        }
         List< RendezVous> rendezVous=rendezVousRepository.findAll();
 
         boolean etat = false;
@@ -510,11 +507,4 @@ else{
     }
 
 
-//    public String prolongementSuccess(String input,String telephone) throws ParseException {
-//        int id_heure = 0;
-//        String date = "";
-//
-//
-//        return null;
-//    }
 }
