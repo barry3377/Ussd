@@ -31,8 +31,7 @@ public class UserTransactionController {
                                               @RequestParam(name = "text") String input) {
         if (input.isEmpty()) { // Nouvelle demande
             return getMenu("1*1", input,"");
-        }else if(( input.equals("2")||
-                (input.matches("^3\\*2")))){
+        }else if(( input.equals("2"))){
             return getMenu("telephoneProche", input,"");
         }
         else if(input.matches("3") ){
@@ -48,7 +47,7 @@ public class UserTransactionController {
             return getMenu("jours", input,"");
         }else if((input.matches("^1\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")
                 || input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")||
-                input.matches("^3\\*1\\*[0-9]++\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}"))){
+                input.matches("^3\\*1\\*[0-9]++\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}")||input.matches("^3\\*2\\*[0-9]++\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}"))){
             return getMenu("heures", input,"");
         }else if(( input.matches("^1\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]+")
                 ||input.matches("^2\\*6[0-9]{8}\\*[0-9]+\\*[0-9]+\\*[0-9]{1,2}/[0-9]{1,2}/2[0-9]{3}+\\*[0-9]+")   )){
@@ -68,11 +67,11 @@ public class UserTransactionController {
         }
 
           else  if(( input.matches("^3\\*1")||
-                (input.matches("^3\\*2\\*6[0-9]{8}")))){
+                (input.matches("^3\\*2")))){
               return  getMenu("verification",input,"");
         }
         else  if(( input.matches("^3\\*1\\*[0-9]+" )||
-                (input.matches("^3\\*2\\*6[0-9]{8}\\*[0-9]+")))){
+                (input.matches("^3\\*2\\*[0-9]+")))){
             return  getMenu("ticket",input,"");
         }
 
