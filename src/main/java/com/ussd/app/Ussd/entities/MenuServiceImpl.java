@@ -482,15 +482,15 @@ public class MenuServiceImpl implements MenuService {
     public String checkTicket(String input) {
 
 
-        Long numero = 0L;
-        //  Long numero = Long.parseLong(input.split("\\*")[2]);
+       // Long numero = 0L;
+          Long numero = Long.parseLong(input.split("\\*")[2]);
 
-        if (input.split("\\*").length == 3) {
-            numero = Long.parseLong(input.split("\\*")[2]);
-        }
-        else if (input.split("\\*").length == 4) {
-            numero = Long.parseLong(input.split("\\*")[3]);
-        }
+//        if (input.split("\\*").length == 3) {
+//            numero = Long.parseLong(input.split("\\*")[2]);
+//        }
+//        else if (input.split("\\*").length == 4) {
+//            numero = Long.parseLong(input.split("\\*")[3]);
+//        }
         List<RendezVous> rendezVous = rendezVousRepository.findAll();
 
         boolean etat = false;
