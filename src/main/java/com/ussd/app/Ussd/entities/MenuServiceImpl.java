@@ -404,7 +404,7 @@ public class MenuServiceImpl implements MenuService {
             String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
             boolean b = orangeSMS.sendMessage("+224"+num, message);
             return "END Votre rendez-vous pour une autre personne à ete enregistrer," +
-                    " vous recevrer un sms de confirmation"+"Status: "+telephone + dep +date1 +heure+ticket+hopital;
+                    " vous recevrer un sms de confirmation"+"Status: "+telephone ;
 
         }
        else  if (input.split("\\*").length == 5) {
@@ -475,7 +475,7 @@ public class MenuServiceImpl implements MenuService {
 
              return "CON  entrer le numero de son tichet precedent";
          }
-else{
+           else{
         return "CON  entrer le numero de votre tichet precedent";}
     }
 
@@ -483,14 +483,14 @@ else{
     public String checkTicket(String input) {
 
 
-        Long numero=0L;
-        //    Long numero = Long.parseLong(input.split("\\*")[2]);
+       // Long numero=0L;
+          Long numero = Long.parseLong(input.split("\\*")[2]);
 
-        if (input.split("\\*").length == 3) {
-            numero = Long.parseLong(input.split("\\*")[2]);
-        }else if (input.split("\\*").length == 4){
-            numero = Long.parseLong(input.split("\\*")[3]);
-        }
+//        if (input.split("\\*").length == 3) {
+//            numero = Long.parseLong(input.split("\\*")[2]);
+//        }else if (input.split("\\*").length == 4){
+//            numero = Long.parseLong(input.split("\\*")[3]);
+//        }
         List< RendezVous> rendezVous=rendezVousRepository.findAll();
 
         boolean etat = false;
