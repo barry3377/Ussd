@@ -483,7 +483,7 @@ public class MenuServiceImpl implements MenuService {
 
 
        // Long numero = 0L;
-          Long numero = Long.parseLong(input.split("\\*")[2]);
+          Long numero = Long.parseLong(input.split("\\*")[1]);
 
 //        if (input.split("\\*").length == 3) {
 //            numero = Long.parseLong(input.split("\\*")[2]);
