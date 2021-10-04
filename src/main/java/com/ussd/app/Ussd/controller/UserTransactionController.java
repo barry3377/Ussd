@@ -34,9 +34,9 @@ public class UserTransactionController {
         }else if(( input.equals("2"))){
             return getMenu("telephoneProche", input,"");
         }
-        else if(input.matches("3") ){
-            return getMenu("prolongerRDV", input,"");
-        }
+//        else if(input.matches("3") ){
+//            return getMenu("prolongerRDV", input,"");
+//        }
         else if((input.equals("1") || input.matches("^2\\*6[0-9]{8}"))){
             return getMenu("services", input,"");
         }else if((input.matches("^1\\*[0-9]+") || input.matches("^2\\*6[0-9]{8}\\*[0-9]+"))){
@@ -66,12 +66,10 @@ public class UserTransactionController {
 
         }
 
-          else  if(( input.matches("^3\\*1")||
-                (input.matches("^3\\*2")))){
+          else  if( input.matches("3")){
               return  getMenu("verification",input,"");
         }
-        else  if(( input.matches("^3\\*1\\*[0-9]+" )||
-                (input.matches("^3\\*2\\*[0-9]+")))){
+        else  if(( input.matches("^3\\*[0-9]+" ))){
             return  getMenu("ticket",input,"");
         }
 
