@@ -393,18 +393,18 @@ public class MenuServiceImpl implements MenuService {
 
             Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
-            RendezVous rendezVous = new RendezVous();
-            rendezVous.setDepartement(dep);
-            rendezVous.setHopital(hopital);
-            rendezVous.setDate(date1);
-            rendezVous.setHeures(heure);
-            rendezVous.setTicket(ticket);
-            rendezVous.setUserTransaction(user);
-            rendezVous =  rendezVousRepository.save(rendezVous);
+//            RendezVous rendezVous = new RendezVous();
+//            rendezVous.setDepartement(dep);
+//            rendezVous.setHopital(hopital);
+//            rendezVous.setDate(date1);
+//            rendezVous.setHeures(heure);
+//            rendezVous.setTicket(ticket);
+//            rendezVous.setUserTransaction(user);
+//            rendezVous =  rendezVousRepository.save(rendezVous);
 //            String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
 //            boolean b = orangeSMS.sendMessage("+224"+num, message);
             return "END Votre rendez-vous pour une autre personne à ete enregistrer," +
-                    " vous recevrer un sms de confirmation"+"Status: "+telephone + dep +date1 +heure+ticket;
+                    " vous recevrer un sms de confirmation"+"Status: "+telephone + dep +date1 +heure+ticket+hopital;
 
         }
        else  if (input.split("\\*").length == 5) {
