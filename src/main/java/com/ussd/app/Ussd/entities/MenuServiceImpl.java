@@ -45,7 +45,8 @@ public class MenuServiceImpl implements MenuService {
 
     @Autowired
     TravailRepository travailRepository;
-    public String getMenu(String level, String input, String telephone)  {
+
+    public String getMenu(String level, String input, String telephone) {
         switch (level) {
             case "1*1":
                 return this.getPrincipal();
@@ -60,19 +61,19 @@ public class MenuServiceImpl implements MenuService {
             case "codeSecret":
                 return this.getCodeSecret(input);
             case "telephoneProche":
-                return  this.getTelephone();
+                return this.getTelephone();
             case "prolongerRDV":
-                return  this.getSecondMenu(input);
+                return this.getSecondMenu(input);
             case "verification":
-                return  this.getVerification(input);
+                return this.getVerification(input);
             case "ticket":
-                return  this.checkTicket(input);
+                return this.checkTicket(input);
             case "confirmation":
-                return  this.getConfirmation();
-           // case "validation":
-              //  return  this.prolongementSuccess(input,telephone);
-               case "rendezVous":
-             return  this.getRendezVours(input, telephone);
+                return this.getConfirmation();
+            // case "validation":
+            //  return  this.prolongementSuccess(input,telephone);
+            case "rendezVous":
+                return this.getRendezVours(input, telephone);
 
 
         }
@@ -98,18 +99,18 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public String getService(String  input) {
+    public String getService(String input) {
         String menu = "CON choisisez un service\n";
-        List<Departement> departements= departementRepository.findAll();
+        List<Departement> departements = departementRepository.findAll();
 
 //        System.out.println("Size : " + travails.size());
 
 
         if (departements.size() > 0) {
-            for( Departement departement: departements){
+            for (Departement departement : departements) {
                 Long depart_id = departement.getId();
                 departement = departementRepository.findById(depart_id).get();
-                menu += departement.getId() +". " + departement.getNom_service()+"\n";
+                menu += departement.getId() + ". " + departement.getNom_service() + "\n";
             }
         }
 
@@ -158,29 +159,29 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public String  getHopital(String input){
+    public String getHopital(String input) {
         String menu = "CON Listes des Hopitaux\n";
 
 
         String id_hopital = "0";
         String id_service = "0";
 
-        if(input.split("\\*").length == 2) {
+        if (input.split("\\*").length == 2) {
             id_service = input.split("\\*")[1];
-        }else if(input.split("\\*").length == 3) {
+        } else if (input.split("\\*").length == 3) {
             id_service = input.split("\\*")[2];
         }
 
         Departement departement = departementRepository.findById(Long.parseLong(id_service)).get();
 //      List<Hopital>hopitals =hopitalRepository.getByService(Integer.parseInt(id_service));
-        List<Hopital>hopitals =hopitalRepository.findByDepartements(departement);
+        List<Hopital> hopitals = hopitalRepository.findByDepartements(departement);
 
 
-            for( Hopital hopital: hopitals){
-                Long hopital_id = hopital.getId();
-                hopital= hopitalRepository.findById(hopital_id).get();
-                menu += hopital.getId() +". " + hopital.getNom_hopital()+"\n";
-            }
+        for (Hopital hopital : hopitals) {
+            Long hopital_id = hopital.getId();
+            hopital = hopitalRepository.findById(hopital_id).get();
+            menu += hopital.getId() + ". " + hopital.getNom_hopital() + "\n";
+        }
 
         return menu;
     }
@@ -197,7 +198,7 @@ public class MenuServiceImpl implements MenuService {
 //            menu += jours.get(i).getId() +". " + jours.get(i).getNom_jour()+"\n";
 //        }
 
-      return  " CON saisisez votre date et excepter les samedis et les dimanches \n";
+        return " CON saisisez votre date et excepter les samedis et les dimanches \n";
 
         //Integer userinput = Integer.parseInt(input.split("\\*")[0]);
 
@@ -246,7 +247,6 @@ public class MenuServiceImpl implements MenuService {
         //            }
 
 
-
 //        String menu = "CON choisisez  le jour dont vous etes  dispo\n";
 //
 //        menu += "1.Lundi \n";
@@ -260,7 +260,6 @@ public class MenuServiceImpl implements MenuService {
 //        return menu;
 
 
-
     }
 
     @Override
@@ -271,11 +270,11 @@ public class MenuServiceImpl implements MenuService {
         String id_service = "0";
 
 
-        if(input.split("\\*").length == 4) {
+        if (input.split("\\*").length == 4) {
             id_hopital = input.split("\\*")[2];
             id_service = input.split("\\*")[1];
 
-        }else if(input.split("\\*").length == 5) {
+        } else if (input.split("\\*").length == 5) {
             id_hopital = input.split("\\*")[2];
             id_service = input.split("\\*")[3];
 
@@ -306,12 +305,12 @@ public class MenuServiceImpl implements MenuService {
 //                menu += value.getNumero() + ". " + value.getInterval_heur() + "\n";
 //            }
 //
-        List<Heure> heures= heureRepository.findAll();
+        List<Heure> heures = heureRepository.findAll();
         if (heures.size() > 0) {
-            for( Heure heure: heures){
+            for (Heure heure : heures) {
                 Long depart_id = heure.getId();
-                heure= heureRepository.findById(depart_id).get();
-                menu += heure.getId() +". " + heure.getInterval_heur()+"\n";
+                heure = heureRepository.findById(depart_id).get();
+                menu += heure.getId() + ". " + heure.getInterval_heur() + "\n";
             }
         }
 
@@ -321,7 +320,7 @@ public class MenuServiceImpl implements MenuService {
 
 
     @Override
-    public String getSecondMenu(String input){
+    public String getSecondMenu(String input) {
         String menu = "CON Prolonger vos Rendez vous \n";
         menu += "1.pour vous \n";
         menu += "2.pour une autre personne \n";
@@ -331,8 +330,8 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String getCodeSecret(String input) {
-      //  Long ordre = Long.parseLong(input.split("\\*")[4]);
-    //    Heure heures = heureRepository.findByNumero(ordre);
+        //  Long ordre = Long.parseLong(input.split("\\*")[4]);
+        //    Heure heures = heureRepository.findByNumero(ordre);
        /* List<Heure> heure = heureRepository.findAll();
         int size = heure.size();
         if (ordre > size || ordre == 0){
@@ -340,12 +339,13 @@ public class MenuServiceImpl implements MenuService {
         }*/
         return "CON Entrer votre code secret slp";
     }
+
     @Override
     public String getConfirmation() {
         String menu = "CON  Confirmer votre paiement\n";
         menu += "1.Confirmer \n";
         menu += "2.Annuler \n";
-        return menu ;
+        return menu;
     }
 
     @SneakyThrows
@@ -355,31 +355,31 @@ public class MenuServiceImpl implements MenuService {
         long x = 1234L;
         long y = 2345L;
         Random r = new Random();
-        long  ticket  = x+((long)(r.nextDouble()*(y-x)));
+        long ticket = x + ((long) (r.nextDouble() * (y - x)));
         int id_hopital = 0;
         Long id_service = 0L;
         int id_heure = 0;
-        String date ="";
-        String num="";
+        String date = "";
+        String num = "";
 
-        if(input.split("\\*").length == 7) {
+        if (input.split("\\*").length == 7) {
             id_service = Long.parseLong(input.split("\\*")[1]);
             id_hopital = Integer.parseInt(input.split("\\*")[2]);
 
-            date= input.split("\\*")[3];
+            date = input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[4]);
 
             date = input.split("\\*")[3];
 
-        }else if(input.split("\\*").length == 8) {
+        } else if (input.split("\\*").length == 8) {
             id_hopital = Integer.parseInt(input.split("\\*")[3]);
             id_service = Long.parseLong(input.split("\\*")[2]);
             date = input.split("\\*")[4];
-         //   id_jour = Integer.parseInt(input.split("\\*")[4]);
+            //   id_jour = Integer.parseInt(input.split("\\*")[4]);
             id_heure = Integer.parseInt(input.split("\\*")[3]);
-            num=(input.split("\\*")[1]);
+            num = (input.split("\\*")[1]);
             UserTransaction usert = new UserTransaction();
-            usert.setMsisdn("+224"+num);
+            usert.setMsisdn("+224" + num);
             UserTransaction user = userTransactionRepository.save(usert);
 
             //Departement
@@ -391,7 +391,7 @@ public class MenuServiceImpl implements MenuService {
             //Heure
             Heure heure = heureRepository.findByNumero((long) id_heure);
 
-            Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
+            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
             RendezVous rendezVous = new RendezVous();
             rendezVous.setDepartement(dep);
@@ -400,30 +400,29 @@ public class MenuServiceImpl implements MenuService {
             rendezVous.setHeures(heure);
             rendezVous.setTicket(ticket);
             rendezVous.setUserTransaction(user);
-            rendezVous =  rendezVousRepository.save(rendezVous);
-            String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
-            boolean b = orangeSMS.sendMessage("+224"+num, message);
+            rendezVous = rendezVousRepository.save(rendezVous);
+            String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est " + ticket;
+            boolean b = orangeSMS.sendMessage("+224" + num, message);
             return "END Votre rendez-vous pour une autre personne à ete enregistrer," +
-                    " vous recevrer un sms de confirmation"+"Status: "+telephone ;
+                    " vous recevrer un sms de confirmation" + "Status: " + telephone;
 
-        }
-       else  if (input.split("\\*").length == 5) {
+        } else if (input.split("\\*").length == 5) {
             System.out.println("vous etes super");
             date = input.split("\\*")[3];
             id_heure = Integer.parseInt(input.split("\\*")[4]);
             Long numero = Long.parseUnsignedLong(input.split("\\*")[2]);
             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
             System.out.println("Ticket : " + numero);
-            RendezVous rendezVous=rendezVousRepository.findByTicket(numero);
+            RendezVous rendezVous = rendezVousRepository.findByTicket(numero);
             Heure heure = heureRepository.findByNumero((long) id_heure);
-          //  return "END "+"Status: "+telephone +date1 +"bb"+heure+rendezVous.getTicket();
+            //  return "END "+"Status: "+telephone +date1 +"bb"+heure+rendezVous.getTicket();
 
             rendezVous.setDate(date1);
             rendezVous.setHeures(heure);
             rendezVousRepository.save(rendezVous);
-            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante"+rendezVous.getDate();
+            String message = "Votre RendezVous a été prolonger avec success  pour la date suivante" + rendezVous.getDate();
             boolean b = orangeSMS.sendMessage(telephone, message);
-            return "END Votre rendez-vous  a bien été prolonger, vous recevrer un sms de confirmation"+"Status: "+telephone;
+            return "END Votre rendez-vous  a bien été prolonger, vous recevrer un sms de confirmation" + "Status: " + telephone;
 
 
         }
@@ -444,7 +443,7 @@ public class MenuServiceImpl implements MenuService {
         Heure heure = heureRepository.findByNumero((long) id_heure);
 
 
-        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
 
         RendezVous rendezVous = new RendezVous();
         rendezVous.setDepartement(dep);
@@ -455,57 +454,60 @@ public class MenuServiceImpl implements MenuService {
         rendezVous.setTicket(ticket);
         rendezVous.setUserTransaction(user);
 
-        rendezVous =  rendezVousRepository.save(rendezVous);
+        rendezVous = rendezVousRepository.save(rendezVous);
 
         if (rendezVous != null) {
 
-         String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est "+ticket;
+            String message = "Votre rendez-vous  a bien ete enregistre, votre numero d'enregistrement est " + ticket;
             boolean b = orangeSMS.sendMessage(telephone, message);
-            System.out.println("Status: "+telephone);
+            System.out.println("Status: " + telephone);
 
-            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation"+"Status: "+telephone;
-        }else {
+            return "END Votre rendez-vous  a bien ete enregistre, vous recevrer un sms de confirmation" + "Status: " + telephone;
+        } else {
             return "END Une erreur inconnu s'est produit";
         }
     }
 
     @Override
     public String getVerification(String input) {
-         if((input.split("\\*").length == 3)){
+        if ((input.split("\\*").length == 3)) {
 
-             return "CON  entrer le numero de son tichet precedent";
-         }
-           else{
-        return "CON  entrer le numero de votre tichet precedent";}
+            return "CON  entrer le numero de son tichet precedent";
+        } else {
+            return "CON  entrer le numero de votre tichet precedent";
+        }
     }
 
     @Override
     public String checkTicket(String input) {
 
 
-       // Long numero=0L;
-          Long numero = Long.parseLong(input.split("\\*")[2]);
+        Long numero = 0L;
+        //  Long numero = Long.parseLong(input.split("\\*")[2]);
 
-//        if (input.split("\\*").length == 3) {
-//            numero = Long.parseLong(input.split("\\*")[2]);
-//        }else if (input.split("\\*").length == 4){
-//            numero = Long.parseLong(input.split("\\*")[3]);
-//        }
-        List< RendezVous> rendezVous=rendezVousRepository.findAll();
+        if (input.split("\\*").length == 3) {
+            numero = Long.parseLong(input.split("\\*")[2]);
+        }
+        else if (input.split("\\*").length == 4) {
+            numero = Long.parseLong(input.split("\\*")[3]);
+        }
+        List<RendezVous> rendezVous = rendezVousRepository.findAll();
 
         boolean etat = false;
-        for(RendezVous rendezVous1:rendezVous){
-            if(rendezVous1.getTicket() == numero) {
-                etat =true;
+        for (RendezVous rendezVous1 : rendezVous) {
+            Long num = rendezVous1.getTicket();
+            if (num.equals(numero)) {
+                etat = true;
                 break;
             }
         }
 
-        if(etat == true) {
+        if (etat == true) {
+
             return "CON Entrer la nouvelle date";
+
         }
-        return "END Numero de ticket invalide"+numero;
+        return "END Numero de ticket invalide" ;
+
     }
-
-
 }
