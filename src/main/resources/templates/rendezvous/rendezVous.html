@@ -106,7 +106,7 @@
                     </a>
                     <ul class="sub">
 
-                        <li><a href="advanced_form_components.html">Liste des rendez-vous</a></li>
+                        <li><a th:href="@{/rendezVous}">Liste des rendez-vous</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -132,7 +132,7 @@
 
     <section id="main-content">
         <section class="wrapper">
-            <h3><i class="fa fa-angle-right"></i> Listes des Hopitaux et services</h3>
+            <h3><i class="fa fa-angle-right"></i> Listes des Rendez_vous</h3>
             <div class="row mb">
                 <!-- page start-->
                 <div class="content-panel">
@@ -141,10 +141,11 @@
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>ticket</th>
-                                <th>Services</th>
                                 <th>Hopital</th>
+                                <th>Services</th>
                                 <th>heures</th>
+                                <th>ticket</th>
+                                <th>Telephone</th>
                                 <th>Date</th>
                                 <th class="hidden-phone">Action</th>
 
@@ -155,21 +156,17 @@
                             <tr class="gradeB" th:each="r:${rendezVous}">
                                 <td class="hidden-phone" th:text="${r.id}"></td>
                                 <td class="center hidden-phone" th:text="${r.hopital}"></td>
-                                <td class="center hidden-phone" th:text="${.departement}"></td>
+                                <td class="center hidden-phone" th:text="${r.departement}"></td>
                                 <td class="center hidden-phone" th:text="${r.heures}"></td>
                                 <td class="center hidden-phone" th:text="${r.ticket}"></td>
+                                <td class="center hidden-phone" th:text="${r.userTransaction}"></td>
                                 <td class="center hidden-phone" th:text="${r.date}"></td>
 
 
                                 <td>
-                                    <a th:href="@{/edithopital/{id}(id=${h.id})}">
-                                        <button class="btn btn-success btn-xs">
-                                            <i class="glyphicon glyphicon-pencil"></i>
-                                            <span> Modifier</span>
-                                        </button>
-                                    </a>
+
                                     <a onclick="return confirm('Voulez vous vraiment supprimer ?')"
-                                       th:href="@{/deleteHopital/{id}(id=${h.id})}">
+                                       th:href="@{/deleteHopital/{id}(id=${r.id})}">
                                         <button type="button" class="btn btn-theme04 btn-xs delete">
                                             <i class="glyphicon glyphicon-trash"></i>
                                             <span> Delete</span>

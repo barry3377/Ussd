@@ -43,4 +43,7 @@ public class UserTransaction {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+    public String toString() {
+        return this.msisdn;
+    }
 }

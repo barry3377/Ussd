@@ -20,7 +20,7 @@ public class RendezVousController {
     public  String listHopital(Model model){
         List<RendezVous> rendezVous=rendezVousRepository.findAll();
         model.addAttribute("rendezVous",rendezVous);
-        return "rendezvous/rendezVous";
+        return "rendezvous/rendezVous.html";
     }
     @GetMapping(value="")
     public  String Statistique(Model model){
