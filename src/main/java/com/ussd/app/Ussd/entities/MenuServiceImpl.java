@@ -8,6 +8,7 @@ import com.ussd.app.Ussd.OrangeSMS.OrangeSMS;
 import com.ussd.app.Ussd.repository.*;
 import com.ussd.app.Ussd.utils.HTravail;
 import com.ussd.app.Ussd.utils.ITravail;
+import javassist.bytecode.stackmap.BasicBlock;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -171,34 +172,65 @@ public class MenuServiceImpl implements MenuService {
         } else if (input.split("\\*").length == 3) {
             id_service = input.split("\\*")[2];
         }
+        try {
 
-        Departement departement = departementRepository.findById(Long.parseLong(id_service)).get();
+            List<Departement> departement1 = departementRepository.findAll();
+            for (int i = 0; i < departement1.size(); i++) {
+
+                Departement departement = departementRepository.findById(Long.parseLong(id_service)).get();
 //      List<Hopital>hopitals =hopitalRepository.getByService(Integer.parseInt(id_service));
-        List<Hopital> hopitals = hopitalRepository.findByDepartements(departement);
+                List<Hopital> hopitals = hopitalRepository.findByDepartements(departement);
 
 
-        for (Hopital hopital : hopitals) {
-            Long hopital_id = hopital.getId();
-            hopital = hopitalRepository.findById(hopital_id).get();
-            menu += hopital.getId() + ". " + hopital.getNom_hopital() + "\n";
-        }
+                for (Hopital hopital : hopitals) {
+                    Long hopital_id = hopital.getId();
+                    hopital = hopitalRepository.findById(hopital_id).get();
+                    menu += hopital.getId() + ". " + hopital.getNom_hopital() + "\n";
+                }
+            }
+                return menu;
+            }
+         catch(Exception e){
 
-        return menu;
+                return this.getService(id_service);
+            }
+
+
     }
-
-
     @Override
     public String getJours(String input) {
+        String id_hopital = "0";
+        String id_service = "0";
+        String menu="";
 
-//
-//        List<Jour> jours = jourRepository.findAll();
-//
-//        for (int i=0; i < jours.size(); i++){
-//            if (i > 4) continue;
-//            menu += jours.get(i).getId() +". " + jours.get(i).getNom_jour()+"\n";
-//        }
+        if (input.split("\\*").length == 3) {
+            id_service = input.split("\\*")[1];
+            id_hopital = input.split("\\*")[2];
 
-        return " CON saisisez votre date et excepter les samedis et les dimanches \n";
+        } else if (input.split("\\*").length == 4) {
+            id_service = input.split("\\*")[2];
+            id_hopital = input.split("\\*")[3];
+        }
+
+        try {
+
+            Departement departement = departementRepository.findById(Long.parseLong(id_service)).get();
+            List<Hopital> hopitals = hopitalRepository.findByDepartements(departement);
+            for (int i = 0; i < hopitals.size(); i++) {
+                if (hopitals.get(i).getId().equals(Long.parseLong(id_hopital))) {
+                    menu = " CON saisisez votre date et excepter les samedis et les dimanches \n";
+                    break;
+                }
+                menu ="eureur de saisie";
+            }
+
+            return menu;
+        } catch(Exception e){
+
+            return "eureur de saisie";
+        }
+
+
 
         //Integer userinput = Integer.parseInt(input.split("\\*")[0]);
 
@@ -337,7 +369,38 @@ public class MenuServiceImpl implements MenuService {
         if (ordre > size || ordre == 0){
             return "Erreur de saisie";
         }*/
-        return "CON Entrer votre code secret slp";
+        String id_heur="0";
+        String id_hopital = "0";
+        String id_service = "0";
+
+        String  menu="";
+        if (input.split("\\*").length == 5) {
+            id_hopital = input.split("\\*")[3];
+            id_service = input.split("\\*")[2];
+            id_heur = input.split("\\*")[4];
+
+        } else if (input.split("\\*").length == 6) {
+            id_hopital = input.split("\\*")[3];
+            id_service = input.split("\\*")[4];
+            id_heur = input.split("\\*")[5];
+
+        }
+
+        List<Heure> heures = heureRepository.findAll();
+
+        for(int i =0; i < heures.size(); i++){
+
+            if (heures.get(i).getId() == Long.parseLong(id_heur)) {
+
+                menu = "CON Entrer votre code secret slp";
+
+                break;
+            }
+             menu = "Erreur de saisie";
+        }
+
+        return menu;
+
     }
 
     @Override
