@@ -192,7 +192,7 @@ public class MenuServiceImpl implements MenuService {
             }
          catch(Exception e){
 
-                return this.getService(id_service);
+                return "END Eureur de saisie";
             }
 
 
@@ -221,13 +221,13 @@ public class MenuServiceImpl implements MenuService {
                     menu = " CON saisisez votre date et excepter les samedis et les dimanches \n";
                     break;
                 }
-                menu ="eureur de saisie";
+                menu ="END Eureur de saisie";
             }
 
             return menu;
         } catch(Exception e){
 
-            return "eureur de saisie";
+            return "END Eureur de saisie";
         }
 
 
@@ -396,7 +396,7 @@ public class MenuServiceImpl implements MenuService {
 
                 break;
             }
-             menu = "Erreur de saisie";
+             menu = " END Erreur de saisie";
         }
 
         return menu;
